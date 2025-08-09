@@ -1,0 +1,823 @@
+{
+  "version": "3.0.0",
+  "name": "Guardian Element Architecture",
+  "description": "new",
+
+"brandColors": {
+    "color1": {
+      "defaultValue": "hsl(83, 36%, 38%)",
+      "name": "Primary",
+      "description": "Main brand color"
+    },
+    "color2": {
+      "defaultValue": "hsl(179, 54%, 39%)",
+      "name": "Secondary", 
+      "description": "Secondary brand color"
+    },
+    "color3": {
+      "defaultValue": "hsl(0, 0%, 50%)",
+      "name": "Neutral",
+      "description": "Neutral color"
+    }
+  },
+  
+  "variables": {
+    "color": {
+      "defaultValue": "hsl(0, 0%, 20%)",
+      "type": "color",
+      "category": "colors",
+      "description": "Text color",
+      "cssProperty": "--color"
+    },
+    "backgroundColor": {
+      "defaultValue": "hsl(0, 0%, 90%)",
+      "type": "color",
+      "category": "colors",
+      "description": "Background color",
+      "cssProperty": "--background-color"
+    },
+    "borderColor": {
+      "defaultValue": "hsl(0, 0%, 80%)",
+      "type": "color",
+      "category": "colors",
+      "description": "Border color",
+      "cssProperty": "--border-color"
+    },
+    "fill": {
+      "defaultValue": "hsl(0, 0%, 80%)",
+      "type": "color",
+      "category": "colors",
+      "description": "SVG fill color",
+      "cssProperty": "--fill"
+    },
+    "stroke": {
+      "defaultValue": "hsl(0, 0%, 70%)",
+      "type": "color",
+      "category": "colors",
+      "description": "SVG stroke color",
+      "cssProperty": "--stroke"
+    },
+    "accentColor": {
+      "defaultValue": "hsl(83, 36%, 38%)",
+      "type": "color",
+      "category": "colors",
+      "description": "Accent color",
+      "cssProperty": "--accent-color"
+    },
+    "outlineColor": {
+      "defaultValue": "hsl(179, 54%, 39%)",
+      "type": "color",
+      "category": "colors",
+      "description": "Focus outline color",
+      "cssProperty": "--outline-color"
+    },
+    "caretColor": {
+      "defaultValue": "hsl(83, 36%, 38%)",
+      "type": "color",
+      "category": "colors",
+      "description": "Cursor color",
+      "cssProperty": "--caret-color"
+    },
+    "background": {
+      "defaultValue": "hsla(0, 0%, 0%, 0.5)",
+      "type": "color",
+      "category": "colors",
+      "description": "Background overlay color",
+      "cssProperty": "--background"
+    },
+    "backgroundImage": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--background-image"
+    },
+    "backgroundSize": {
+      "defaultValue": "cover",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--background-size"
+    },
+    "backgroundPosition": {
+      "defaultValue": "center",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--background-position"
+    },
+    "backgroundRepeat": {
+      "defaultValue": "no-repeat",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--background-repeat"
+    },
+    "backdropFilter": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--backdrop-filter"
+    },
+    "boxShadow": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--box-shadow"
+    },
+    "opacity": {
+      "defaultValue": "1",
+      "type": "number",
+      "category": "visual",
+      "cssProperty": "--opacity"
+    },
+    "borderRadius": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "border",
+      "cssProperty": "--border-radius"
+    },
+    "borderWidth": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "border",
+      "cssProperty": "--border-width"
+    },
+    "borderStyle": {
+      "defaultValue": "solid",
+      "type": "string",
+      "category": "border",
+      "cssProperty": "--border-style"
+    },
+    "borderTopWidth": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "border",
+      "cssProperty": "--border-top-width"
+    },
+    "borderRightWidth": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "border",
+      "cssProperty": "--border-right-width"
+    },
+    "borderBottomWidth": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "border",
+      "cssProperty": "--border-bottom-width"
+    },
+    "borderLeftWidth": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "border",
+      "cssProperty": "--border-left-width"
+    },
+    "display": {
+      "defaultValue": "block",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--display"
+    },
+    "position": {
+      "defaultValue": "relative",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--position"
+    },
+    "cursor": {
+      "defaultValue": "default",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--cursor-type",
+      "mapsTo": "cursor"
+    },
+    "userSelect": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--user-select"
+    },
+    "fontFamily": {
+      "defaultValue": "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--font-family"
+    },
+    "fontSize": {
+      "defaultValue": "1rem",
+      "type": "dimension",
+      "category": "typography",
+      "cssProperty": "--font-size"
+    },
+    "fontWeight": {
+      "defaultValue": "400",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--font-weight"
+    },
+    "lineHeight": {
+      "defaultValue": "1.5",
+      "type": "number",
+      "category": "typography",
+      "cssProperty": "--line-height"
+    },
+    "letterSpacing": {
+      "defaultValue": "normal",
+      "type": "dimension",
+      "category": "typography",
+      "cssProperty": "--letter-spacing"
+    },
+    "textAlign": {
+      "defaultValue": "left",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--text-align"
+    },
+    "textTransform": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--text-transform"
+    },
+    "width": {
+      "defaultValue": "auto",
+      "type": "dimension",
+      "category": "sizing",
+      "cssProperty": "--width"
+    },
+    "height": {
+      "defaultValue": "auto",
+      "type": "dimension",
+      "category": "sizing",
+      "cssProperty": "--height"
+    },
+    "minWidth": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "sizing",
+      "cssProperty": "--min-width"
+    },
+    "maxWidth": {
+      "defaultValue": "none",
+      "type": "dimension",
+      "category": "sizing",
+      "cssProperty": "--max-width"
+    },
+    "minHeight": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "sizing",
+      "cssProperty": "--min-height"
+    },
+    "maxHeight": {
+      "defaultValue": "none",
+      "type": "dimension",
+      "category": "sizing",
+      "cssProperty": "--max-height"
+    },
+    "padding": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "spacing",
+      "cssProperty": "--padding"
+    },
+    "margin": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "spacing",
+      "cssProperty": "--margin"
+    },
+    "gap": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "layout",
+      "cssProperty": "--gap"
+    },
+    "justifyContent": {
+      "defaultValue": "flex-start",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--justify-content"
+    },
+    "alignItems": {
+      "defaultValue": "stretch",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--align-items"
+    },
+    "placeItems": {
+      "defaultValue": "stretch",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--place-items"
+    },
+    "gridTemplateColumns": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-template-columns"
+    },
+    "gridTemplateRows": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-template-rows"
+    },
+    "gridTemplateAreas": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-template-areas"
+    },
+    "gridArea": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-area"
+    },
+    "flexDirection": {
+      "defaultValue": "row",
+      "type": "string",
+      "category": "flex",
+      "cssProperty": "--flex-direction"
+    },
+    "transition": {
+      "defaultValue": "all 0.2s ease",
+      "type": "string",
+      "category": "animation",
+      "cssProperty": "--transition"
+    },
+    "transform": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--transform"
+    },
+    "objectFit": {
+      "defaultValue": "cover",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--object-fit"
+    }
+  },
+
+"elementScopes": {
+  "baseElement": {
+      "category": "base",
+      "name": "Base Element",
+      "description": "Single element",
+      "variables": {
+        "display": "grid",
+        "gridTemplateColumns": "1f",
+        "gridTemplateRows": "1fr",
+        "width": "100%",
+        "height": "100%"
+      }
+    },
+    "button": {
+      "category": "interactive",
+      "name": "Button",
+      "description": "Interactive element",
+      "variables": {
+        "display": "inline-flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "padding": "0.5rem 1rem",
+        "fontSize": "0.875rem",
+        "fontWeight": "500",
+        "lineHeight": "1.2",
+        "borderRadius": "0.375rem",
+        "border": "1px solid var(--one-border)",
+        "backgroundColor": "var(--one-surface)",
+        "color": "var(--one-content)",
+        "cursor": "pointer",
+        "userSelect": "none",
+        "height": "2.5rem"
+      }
+    },
+    "link": {
+      "category": "interactive",
+      "name": "Link",
+      "description": "Interactive element",
+      "variables": {
+        "display": "inline",
+        "color": "var(--one-accent-color)",
+        "textDecoration": "underline",
+        "textUnderlineOffset": "3px",
+        "textDecorationColor": "hsla(220, 70%, 50%, 0.4)",
+        "cursor": "pointer",
+        "transition": "all 0.2s ease",
+        "fontWeight": "inherit"
+      }
+    },
+    "badge": {
+      "category": "interactive",
+      "name": "Badge",
+      "description": "Interactive element",
+      "variables": {
+        "display": "inline-flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "padding": "0.125rem 0.375rem",
+        "fontSize": "0.75rem",
+        "fontWeight": "500",
+        "lineHeight": "1.2",
+        "borderRadius": "0.25rem",
+        "backgroundColor": "hsl(210, 20%, 85%)",
+        "color": "var(--one-content)",
+        "textTransform": "uppercase",
+        "letterSpacing": "0.025em",
+        "userSelect": "none",
+        "whiteSpace": "nowrap",
+        "minHeight": "1.25rem"
+      }
+    },
+    "tag": {
+      "category": "interactive",
+      "name": "Tag",
+      "description": "Interactive element",
+      "variables": {
+        "display": "inline-flex",
+        "alignItems": "center",
+        "gap": "0.375rem",
+        "padding": "0.25rem 0.5rem",
+        "fontSize": "0.875rem",
+        "fontWeight": "500",
+        "lineHeight": "1.2",
+        "borderRadius": "0.375rem",
+        "backgroundColor": "hsl(210, 15%, 90%)",
+        "color": "var(--one-content)",
+        "border": "1px solid hsl(210, 15%, 80%)",
+        "cursor": "default",
+        "transition": "all 0.2s ease",
+        "userSelect": "none",
+        "maxWidth": "12rem"
+      }
+    },
+    "tooltip": {
+      "category": "interactive",
+      "name": "Tooltip",
+      "description": "Interactive element",
+      "variables": {
+        "position": "relative",
+        "display": "inline-block",
+        "cursor": "help"
+      }
+    },
+    
+    "spacer": {
+      "category": "layout",
+      "name": "Spacer",
+      "description": "Layout element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "height": "1rem",
+        "margin": "0",
+        "padding": "0",
+        "backgroundColor": "transparent"
+      }
+    },
+    "divider": {
+      "category": "layout",
+      "name": "Divider",
+      "description": "Layout element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "height": "1px",
+        "margin": "1rem 0",
+        "padding": "0",
+        "backgroundColor": "hsl(0, 0%, 85%)",
+        "border": "none"
+      }
+    },
+    "input": {
+      "category": "form",
+      "name": "Input",
+      "description": "Form element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "padding": "0.5rem 0.75rem",
+        "fontSize": "1rem",
+        "lineHeight": "1.5",
+        "border": "1px solid var(--one-border)",
+        "borderRadius": "0.375rem",
+        "backgroundColor": "var(--one-surface)",
+        "color": "var(--one-content)",
+        "outline": "none",
+        "transition": "border-color 0.2s ease",
+        "boxSizing": "border-box"
+      }
+    },
+    "textarea": {
+      "category": "form",
+      "name": "Textarea",
+      "description": "Form element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "minHeight": "4rem",
+        "padding": "0.5rem 0.75rem",
+        "fontSize": "1rem",
+        "lineHeight": "1.5",
+        "border": "1px solid var(--one-border)",
+        "borderRadius": "0.375rem",
+        "backgroundColor": "var(--one-surface)",
+        "color": "var(--one-content)",
+        "outline": "none",
+        "resize": "vertical",
+        "transition": "border-color 0.2s ease",
+        "boxSizing": "border-box"
+      }
+    },
+    "select": {
+      "category": "form",
+      "name": "Select",
+      "description": "Form element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "padding": "0.5rem 0.75rem",
+        "fontSize": "1rem",
+        "lineHeight": "1.5",
+        "border": "1px solid var(--one-border)",
+        "borderRadius": "0.375rem",
+        "backgroundColor": "var(--one-surface)",
+        "color": "var(--one-content)",
+        "outline": "none",
+        "cursor": "pointer",
+        "transition": "border-color 0.2s ease",
+        "boxSizing": "border-box"
+      }
+    },
+    "checkbox": {
+      "category": "form",
+      "name": "Checkbox",
+      "description": "Form element",
+      "styles": {
+        "display": "inline-block",
+        "width": "1rem",
+        "height": "1rem",
+        "margin": "0 0.5rem 0 0",
+        "cursor": "pointer",
+        "accentColor": "hsl(220, 70%, 50%)"
+      }
+    },
+    "radio": {
+      "category": "form",
+      "name": "Radio",
+      "description": "Form element",
+      "styles": {
+        "display": "inline-block",
+        "width": "1rem",
+        "height": "1rem",
+        "margin": "0 0.5rem 0 0",
+        "cursor": "pointer",
+        "accentColor": "hsl(220, 70%, 50%)"
+      }
+    },
+    "switch": {
+      "category": "form",
+      "name": "Switch",
+      "description": "Form element",
+      "styles": {
+        "display": "inline-block",
+        "width": "3rem",
+        "height": "1.5rem",
+        "margin": "0 0.5rem 0 0",
+        "cursor": "pointer",
+        "accentColor": "hsl(220, 70%, 50%)",
+        "borderRadius": "0.75rem"
+      }
+    },
+    "slider": {
+      "category": "form",
+      "name": "Slider",
+      "description": "Form element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "height": "0.5rem",
+        "margin": "0.5rem 0",
+        "cursor": "pointer",
+        "accentColor": "hsl(220, 70%, 50%)",
+        "borderRadius": "0.25rem"
+      }
+    },
+    "image": {
+      "category": "media",
+      "name": "Image",
+      "description": "Media element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "height": "auto",
+        "borderRadius": "0.375rem",
+        "boxShadow": "0 1px 3px hsla(0, 0%, 0%, 0.1)",
+        "backgroundColor": "var(--one-surface)",
+        "objectFit": "cover"
+      }
+    },
+    "avatar": {
+      "category": "media",
+      "name": "Avatar",
+      "description": "Media element",
+      "styles": {
+        "display": "inline-block",
+        "width": "2.5rem",
+        "height": "2.5rem",
+        "borderRadius": "50%",
+        "objectFit": "cover",
+        "backgroundColor": "var(--one-surface)",
+        "border": "2px solid hsl(0, 0%, 85%)"
+      }
+    },
+    "icon": {
+      "category": "media",
+      "name": "Icon",
+      "description": "Media element",
+      "styles": {
+        "display": "inline-block",
+        "width": "1.5rem",
+        "height": "1.5rem",
+        "fontSize": "1.5rem",
+        "lineHeight": "1",
+        "textAlign": "center",
+        "color": "var(--one-content)",
+        "verticalAlign": "middle"
+      }
+    },
+    "alert": {
+      "category": "feedback",
+      "name": "Alert",
+      "description": "Feedback element",
+      "styles": {
+        "display": "block",
+        "padding": "1rem",
+        "margin": "1rem 0",
+        "borderRadius": "0.375rem",
+        "backgroundColor": "hsl(220, 70%, 95%)",
+        "color": "var(--one-content)",
+        "border": "1px solid hsl(220, 70%, 85%)",
+        "fontSize": "0.875rem",
+        "lineHeight": "1.4"
+      }
+    },
+    "progress": {
+      "category": "feedback",
+      "name": "Progress",
+      "description": "Feedback element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "height": "0.5rem",
+        "backgroundColor": "var(--one-surface)",
+        "borderRadius": "0.25rem",
+        "overflow": "hidden",
+        "position": "relative"
+      }
+    },
+    "spinner": {
+      "category": "feedback",
+      "name": "Spinner",
+      "description": "Feedback element",
+      "styles": {
+        "display": "inline-block",
+        "width": "1.5rem",
+        "height": "1.5rem",
+        "border": "2px solid var(--one-border)",
+        "borderTopColor": "hsl(220, 70%, 50%)",
+        "borderRadius": "50%",
+        "animation": "spin 1s linear infinite"
+      }
+    },
+    "skeleton": {
+      "category": "feedback",
+      "name": "Skeleton",
+      "description": "Feedback element",
+      "styles": {
+        "display": "block",
+        "width": "100%",
+        "height": "1rem",
+        "backgroundColor": "var(--one-surface)",
+        "borderRadius": "0.25rem",
+        "position": "relative",
+        "overflow": "hidden"
+      }
+    },
+    "header": {
+      "category": "structure",
+      "name": "Header",
+      "description": "Structure element",
+      "styles": {
+        "display": "flex",
+        "alignItems": "center",
+        "padding": "0 1.5rem",
+        "backgroundColor": "var(--one-surface)",
+        "color": "var(--one-content)",
+        "width": "100%",
+        "height": "100%",
+        "boxSizing": "border-box",
+        "gridArea": "a"
+      }
+    },
+    "aside": {
+      "category": "structure",
+      "name": "Sidebar",
+      "description": "Structure element",
+      "styles": {
+        "display": "flex",
+        "flexDirection": "column",
+        "padding": "1rem",
+        "backgroundColor": "var(--one-surface)",
+        "color": "var(--one-content)",
+        "width": "100%",
+        "height": "100%",
+        "boxSizing": "border-box",
+        "overflow": "auto",
+        "gridArea": "b"
+      }
+    },
+    "main": {
+      "category": "structure",
+      "name": "Main",
+      "description": "Structure element",
+      "styles": {
+        "display": "grid", 
+        "gridTemplateColumns": "250px 1fr 300px",
+        "gridTemplateRows": "60px 1fr",
+        "gridTemplateAreas": "\"a a a\" \"b c d\"",
+        "gap": "1px",
+        "backgroundColor": "var(--one-surface)",
+        "color": "var(--one-content)",
+        "width": "100%",
+        "height": "100%",
+        "boxSizing": "border-box",
+        "overflow": "auto"
+      }
+    },
+    "dashboard": {
+      "category": "structure",
+      "name": "Dashboard",
+      "description": "Structure element",
+      "styles": {
+        "display": "grid",
+        "width": "100vw",
+        "height": "100vh",
+        "gridTemplateColumns": "250px 1fr 300px",
+        "gridTemplateRows": "60px 1fr",
+        "gridTemplateAreas": "\"a a a\" \"b c d\"",
+        "gap": "1px",
+        "backgroundColor": "var(--one-background-color)",
+        "boxSizing": "border-box",
+        "padding": "0",
+        "margin": "0"
+      }
+    },
+
+  "elementCategories": {
+    "base": {
+      "name": "Base",
+      "icon": "🏗️",
+      "color": "#8b5cf6",
+      "description": "Structural components for organizing content"
+    },
+    "typography": {
+      "name": "Typography Elements", 
+      "icon": "📝",
+      "color": "#3b82f6",
+      "description": "Text and heading components"
+    },
+    "interactive": {
+      "name": "Interactive Elements",
+      "icon": "⚡",
+      "color": "#ef4444", 
+      "description": "Clickable and interactive components"
+    },
+    "form": {
+      "name": "Form Elements",
+      "icon": "📝",
+      "color": "#10b981",
+      "description": "Input and form components"
+    },
+    "media": {
+      "name": "Media Elements",
+      "icon": "🖼️", 
+      "color": "#f59e0b",
+      "description": "Images and media components"
+    },
+    "feedback": {
+      "name": "Feedback Elements",
+      "icon": "💬",
+      "color": "#ef4444",
+      "description": "Alerts, progress, and status components"
+    },
+    "structure": {
+      "name": "Structure Elements",
+      "icon": "🏛️",
+      "color": "#6366f1",
+      "description": "Structural layout components"
+    }
+  }
+}
+
+

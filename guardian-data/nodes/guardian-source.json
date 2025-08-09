@@ -1,0 +1,32 @@
+{
+  "id": "guardian-source",
+  "name": "Guardian Source Protections",
+  "type": "processor",
+  "paths": [
+    "src/main.tsx",
+    "src/App.tsx",
+    "src/pages/NodesPage.tsx",
+    "src/adapters/storage-fs.ts",
+    "server.js"
+  ],
+  "checks": {
+    "checksum": "sha256",
+    "patterns": {
+      "forbid": [
+        "document\\.(head|querySelector\\(\\s*['\"]head['\"]\\s*\\))",
+        "<style",
+        "\\.style\\s*=",
+        "#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b"
+      ],
+      "require": []
+    },
+    "custom": [],
+    "baseline": {}
+  },
+  "agent": {
+    "id": "shanna",
+    "name": "Shanna",
+    "email": ""
+  },
+  "status": "approved"
+}

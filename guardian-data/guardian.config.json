@@ -1,0 +1,7 @@
+{
+  "projectRoot": "./",
+  "baselineRef": "HEAD",
+  "adapters": { "storage": "fs" },
+  "rulesets": ["shadow-dom", "theme-system", "guardian-drift"]
+}
+

@@ -1,0 +1,30 @@
+{
+  "id": "theme-guardian",
+  "name": "Guardian Theme JSON",
+  "type": "theme",
+  "paths": [
+    "guardian-data/themes/guardian-theme.json"
+  ],
+  "checks": {
+    "checksum": "sha256",
+    "patterns": {
+      "forbid": [
+        "@vite/client",
+        "time(\""
+      ],
+      "require": [
+        "UIGenerator"
+      ]
+    },
+    "custom": [],
+    "baseline": {
+      "guardian-data/themes/guardian-theme.json": "ac08347527f2692f070a74785ccae84fb316f2672701c34e32855372348c90d2"
+    }
+  },
+  "agent": {
+    "id": "shanna",
+    "name": "Shanna",
+    "email": ""
+  },
+  "status": "approved"
+}
