@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone Architecture Theme - Core System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        /* =========================================
+           ZONE ARCHITECTURE CORE SYSTEM
+           ========================================= */
+        
+        /* 1. CORE ZONE CLASS - Complete 103+ Variables */
+        .zone {
+            /* ========== COLORS (9 variables) ========== */
+            --color: hsl(0, 0%, 20%);
+            --background-color: hsl(0, 0%, 90%);
+            --border-color: hsl(0, 0%, 80%);
+            --fill: hsl(0, 0%, 80%);
+            --stroke: hsl(0, 0%, 70%);
+            --accent-color: hsl(83, 36%, 38%);
+            --outline-color: hsl(179, 54%, 39%);
+            --caret-color: hsl(83, 36%, 38%);
+            --background: hsl(0, 0%, 15%);
+            
+            /* ========== VISUAL EFFECTS (16 variables) ========== */
+            --background-image: none;
+            --mask-image: none;
+            --backdrop-filter: none;
+            --filter: none;
+            --mask-mode: alpha;
+            --mask-repeat: no-repeat;
+            --mask-position: center;
+            --mask-size: contain;
+            --background-size: cover;
+            --background-position: center;
+            --background-repeat: no-repeat;
+            --box-shadow: none;
+            --text-shadow: none;
+            --opacity: 1;
+            --transform: none;
+            --transform-origin: center;
+            
+            /* ========== BORDERS (15 variables) ========== */
+            --border-radius: 0;
+            --border-width: 0;
+            --border-style: solid;
+            --border-top-width: 0;
+            --border-right-width: 0;
+            --border-bottom-width: 0;
+            --border-left-width: 0;
+            --border-top-style: solid;
+            --border-right-style: solid;
+            --border-bottom-style: solid;
+            --border-left-style: solid;
+            --outline-width: 0px;
+            --outline-style: solid;
+            --outline-offset: 0;
+            --stroke-width: 0;
+            
+            /* ========== BEHAVIOR (10 variables) ========== */
+            --display: block;
+            --position: relative;
+            --overflow: visible;
+            --overflow-x: visible;
+            --overflow-y: visible;
+            --visibility: visible;
+            --pointer-events: auto;
+            --user-select: auto;
+            --cursor: default;
+            --z-index: auto;
+            
+            /* ========== TYPOGRAPHY (14 variables) ========== */
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-size: 1rem;
+            --font-weight: 400;
+            --font-style: normal;
+            --line-height: 1.5;
+            --letter-spacing: normal;
+            --text-align: left;
+            --text-decoration: none;
+            --text-transform: none;
+            --text-overflow: clip;
+            --white-space: normal;
+            --word-break: normal;
+            --word-wrap: normal;
+            --vertical-align: baseline;
+            
+            /* ========== SIZING (7 variables) ========== */
+            --width: auto;
+            --height: auto;
+            --min-width: 0;
+            --max-width: none;
+            --min-height: 0;
+            --max-height: none;
+            --aspect-ratio: auto;
+            
+            /* ========== SPACING (2 variables) ========== */
+            --padding: 0;
+            --margin: 0;
+            
+            /* ========== POSITIONING (4 variables) ========== */
+            --top: auto;
+            --right: auto;
+            --bottom: auto;
+            --left: auto;
+            
+            /* ========== LAYOUT (9 variables) ========== */
+            --gap: 0;
+            --justify-content: flex-start;
+            --align-items: stretch;
+            --align-content: stretch;
+            --justify-items: stretch;
+            --place-items: stretch;
+            --align-self: auto;
+            --justify-self: auto;
+            --place-self: auto;
+            
+            /* ========== GRID (9 variables) ========== */
+            --grid-template-columns: none;
+            --grid-template-rows: none;
+            --grid-template-areas: none;
+            --grid-column: auto;
+            --grid-row: auto;
+            --grid-area: auto;
+            --grid-auto-columns: auto;
+            --grid-auto-rows: auto;
+            --grid-auto-flow: row;
+            
+            /* ========== FLEX (6 variables) ========== */
+            --flex-direction: row;
+            --flex-wrap: nowrap;
+            --flex-basis: auto;
+            --flex-grow: 0;
+            --flex-shrink: 1;
+            --order: 0;
+            
+            /* ========== ANIMATION (2 variables) ========== */
+            --animation: none;
+            --transition: none;
+            
+            /* ========================================
+               APPLY ALL VARIABLES TO CSS PROPERTIES
+               ======================================== */
+            
+            /* Colors */
+            color: var(--color);
+            background-color: var(--background-color);
+            border-color: var(--border-color);
+            fill: var(--fill);
+            stroke: var(--stroke);
+            accent-color: var(--accent-color);
+            outline-color: var(--outline-color);
+            caret-color: var(--caret-color);
+            background: var(--background);
+            
+            /* Visual Effects */
+            background-image: var(--background-image);
+            mask-image: var(--mask-image);
+            backdrop-filter: var(--backdrop-filter);
+            filter: var(--filter);
+            mask-mode: var(--mask-mode);
+            mask-repeat: var(--mask-repeat);
+            mask-position: var(--mask-position);
+            mask-size: var(--mask-size);
+            background-size: var(--background-size);
+            background-position: var(--background-position);
+            background-repeat: var(--background-repeat);
+            box-shadow: var(--box-shadow);
+            text-shadow: var(--text-shadow);
+            opacity: var(--opacity);
+            transform: var(--transform);
+            transform-origin: var(--transform-origin);
+            
+            /* Borders */
+            border-radius: var(--border-radius);
+            border-width: var(--border-width);
+            border-style: var(--border-style);
+            border-top-width: var(--border-top-width);
+            border-right-width: var(--border-right-width);
+            border-bottom-width: var(--border-bottom-width);
+            border-left-width: var(--border-left-width);
+            border-top-style: var(--border-top-style);
+            border-right-style: var(--border-right-style);
+            border-bottom-style: var(--border-bottom-style);
+            border-left-style: var(--border-left-style);
+            outline-width: var(--outline-width);
+            outline-style: var(--outline-style);
+            outline-offset: var(--outline-offset);
+            stroke-width: var(--stroke-width);
+            
+            /* Behavior */
+            display: var(--display);
+            position: var(--position);
+            overflow: var(--overflow);
+            overflow-x: var(--overflow-x);
+            overflow-y: var(--overflow-y);
+            visibility: var(--visibility);
+            pointer-events: var(--pointer-events);
+            user-select: var(--user-select);
+            cursor: var(--cursor);
+            z-index: var(--z-index);
+            
+            /* Typography */
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            font-weight: var(--font-weight);
+            font-style: var(--font-style);
+            line-height: var(--line-height);
+            letter-spacing: var(--letter-spacing);
+            text-align: var(--text-align);
+            text-decoration: var(--text-decoration);
+            text-transform: var(--text-transform);
+            text-overflow: var(--text-overflow);
+            white-space: var(--white-space);
+            word-break: var(--word-break);
+            word-wrap: var(--word-wrap);
+            vertical-align: var(--vertical-align);
+            
+            /* Sizing */
+            width: var(--width);
+            height: var(--height);
+            min-width: var(--min-width);
+            max-width: var(--max-width);
+            min-height: var(--min-height);
+            max-height: var(--max-height);
+            aspect-ratio: var(--aspect-ratio);
+            
+            /* Spacing */
+            padding: var(--padding);
+            margin: var(--margin);
+            
+            /* Positioning */
+            top: var(--top);
+            right: var(--right);
+            bottom: var(--bottom);
+            left: var(--left);
+            
+            /* Layout */
+            gap: var(--gap);
+            justify-content: var(--justify-content);
+            align-items: var(--align-items);
+            align-content: var(--align-content);
+            justify-items: var(--justify-items);
+            place-items: var(--place-items);
+            align-self: var(--align-self);
+            justify-self: var(--justify-self);
+            place-self: var(--place-self);
+            
+            /* Grid */
+            grid-template-columns: var(--grid-template-columns);
+            grid-template-rows: var(--grid-template-rows);
+            grid-template-areas: var(--grid-template-areas);
+            grid-column: var(--grid-column);
+            grid-row: var(--grid-row);
+            grid-area: var(--grid-area);
+            grid-auto-columns: var(--grid-auto-columns);
+            grid-auto-rows: var(--grid-auto-rows);
+            grid-auto-flow: var(--grid-auto-flow);
+            
+            /* Flex */
+            flex-direction: var(--flex-direction);
+            flex-wrap: var(--flex-wrap);
+            flex-basis: var(--flex-basis);
+            flex-grow: var(--flex-grow);
+            flex-shrink: var(--flex-shrink);
+            order: var(--order);
+            
+            /* Animation */
+            animation: var(--animation);
+            transition: var(--transition);
+            
+            /* Box Model */
+            box-sizing: border-box;
+        }
+        
+        /* 2. MATHEMATICAL POSITIONS */
+        .a { --grid-area: a; }
+        .b { --grid-area: b; }
+        .c { --grid-area: c; }
+        .d { --grid-area: d; }
+        .e { --grid-area: e; }
+        .f { --grid-area: f; }
+        .g { --grid-area: g; }
+        .h { --grid-area: h; }
+        
+        /* 3. Z-INDEX LAYERS */
+        .back { --z-index: 0; }
+        .mid { --z-index: 1; }
+        .front { --z-index: 2; }
+        .overlay { --z-index: 10; }
+        .modal { --z-index: 100; }
+        
+        /* 4. BRAND COLORS (Reference only - not used as variables) */
+        /* 
+        Brand Colors from Guardian Theme:
+        - Primary: hsl(83, 36%, 38%)
+        - Secondary: hsl(179, 54%, 39%)
+        - Neutral: hsl(0, 0%, 50%)
+        */
+        
+        /* 5. LOOK PRESETS (Color Themes) - All 9 Colors Defined */
+        .look-primary {
+            /* All 9 color variables for complete transformation */
+            --color: hsl(0, 0%, 20%);                  /* dark text */
+            --background-color: hsl(0, 0%, 100%);      /* white surface */
+            --border-color: hsl(0, 0%, 85%);           /* light border */
+            --fill: hsl(83, 36%, 38%);                 /* primary green */
+            --stroke: hsl(0, 0%, 50%);                 /* neutral gray */
+            --accent-color: hsl(83, 36%, 38%);         /* primary green */
+            --outline-color: hsl(83, 36%, 38%);        /* primary green */
+            --caret-color: hsl(83, 36%, 38%);          /* primary green */
+            --background: hsla(83, 36%, 38%, 0.05);    /* primary tint overlay */
+        }
+        
+        .look-secondary {
+            /* All 9 color variables for complete transformation */
+            --color: hsl(0, 0%, 100%);                 /* white text */
+            --background-color: hsl(179, 54%, 39%);    /* secondary teal */
+            --border-color: hsl(179, 54%, 29%);        /* darker teal border */
+            --fill: hsl(0, 0%, 100%);                  /* white fill */
+            --stroke: hsl(83, 36%, 38%);               /* primary green */
+            --accent-color: hsl(83, 36%, 38%);         /* primary green */
+            --outline-color: hsl(83, 36%, 48%);        /* lighter green */
+            --caret-color: hsl(0, 0%, 100%);           /* white caret */
+            --background: hsla(179, 54%, 20%, 0.3);    /* dark teal overlay */
+        }
+        
+        .look-neutral {
+            /* All 9 color variables for complete transformation */
+            --color: hsl(0, 0%, 100%);                 /* white text */
+            --background-color: hsl(0, 0%, 50%);       /* neutral gray */
+            --border-color: hsl(0, 0%, 40%);           /* darker gray border */
+            --fill: hsl(83, 36%, 38%);                 /* primary green */
+            --stroke: hsl(179, 54%, 39%);              /* secondary teal */
+            --accent-color: hsl(179, 54%, 39%);        /* secondary teal */
+            --outline-color: hsl(179, 54%, 49%);       /* lighter teal */
+            --caret-color: hsl(83, 36%, 38%);          /* primary green */
+            --background: hsla(0, 0%, 0%, 0.2);        /* black overlay */
+        }
+        
+        /* =========================================
+           6. ELEMENT PRESETS (Transform Zones)
+           ========================================= */
+        
+        /* BASE ELEMENT */
+        .base {
+            --display: grid;
+            --grid-cols: 1fr;
+            
+        }
+
+        .zones{
+        .a --grid-area: a;
+        .b --grid-area: b;
+        .c --grid-area: c;
+        .d --grid-area: d;
+        .e --grid-area: e;
+        .f --grid-area: f;\
+        }
+    
+        
+        /* 3. Layer Helpers (Z-index) */
+        .back { --z-index: 0; }
+        .mid { --z-index: 1; }
+        .front { --z-index: 2; }
+        
+        /* 4. Presets (Transform Everything) */
+        .split {
+            --display: grid;
+            --grid-areas: "a b";
+            --grid-cols: 1fr 1fr;
+            --height: 400px;
+            --background: white;
+            --border-radius: 1rem;
+            --box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            --overflow: hidden;
+        }
+        
+        .split .a {
+            --padding: 3rem;
+            --display: grid;
+            --align-content: center;
+            --background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .split .b {
+            --background: #f0f0f0;
+            --display: grid;
+            --align-content: center;
+            --justify-content: center;
+        }
+        
+        .split .c {
+            --font-size: 2.5rem;
+            --font-weight: 700;
+            --color: white;
+            --margin: 0 0 1rem 0;
+        }
+        
+        .split .d {
+            --font-size: 1.125rem;
+            --color: rgba(255,255,255,0.9);
+            --line-height: 1.6;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- Clean slate - ready for our simple example -->
+</body>
+</html>

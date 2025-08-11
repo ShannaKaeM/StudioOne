@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone System - Proof of Concept</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        /* =================================
+           THE ENTIRE SYSTEM
+           ================================= */
+        
+        /* 1. Base Class - Maps variables to properties */
+        .zone {
+            display: var(--display, block);
+            grid-template-areas: var(--grid-areas);
+            grid-template-columns: var(--grid-cols);
+            grid-area: var(--grid-area);
+            position: var(--position, relative);
+            z-index: var(--z-index, auto);
+            width: var(--width, auto);
+            height: var(--height, auto);
+            padding: var(--padding, 0);
+            background: var(--background, transparent);
+            color: var(--color, inherit);
+            font-size: var(--font-size, 1rem);
+            font-weight: var(--font-weight, 400);
+            line-height: var(--line-height, 1.5);
+            place-items: var(--place-items);
+        }
+        
+        /* 2. Position Helpers - Grid areas */
+        .a { --grid-area: a; }
+        .b { --grid-area: b; }
+        .c { --grid-area: c; }
+        .d { --grid-area: d; }
+        
+        /* 3. Layer Helpers - Z-index */
+        .back { --z-index: 0; }
+        .middle { --z-index: 1; }
+        .front { --z-index: 2; }
+        
+        /* 4. PRESET: Split Screen */
+        .split {
+            --display: grid;
+            --grid-areas: "a b";
+            --grid-cols: 1fr 1fr;
+            --height: 100vh;
+        }
+        
+        .split .a {
+            --background: linear-gradient(135deg, #667eea, #764ba2);
+            --padding: 3rem;
+            --display: grid;
+            --place-items: center;
+        }
+        
+        .split .b {
+            --background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect fill="%23222" width="400" height="400"/><circle cx="200" cy="200" r="80" fill="%23667eea" opacity="0.3"/></svg>') center/cover;
+        }
+        
+        .split .c {
+            --font-size: 3rem;
+            --font-weight: 700;
+            --color: white;
+        }
+        
+        .split .d {
+            --font-size: 1.2rem;
+            --color: rgba(255,255,255,0.9);
+        }
+        
+        /* 5. PRESET: Full Screen Overlay */
+        .fullscreen {
+            --display: grid;
+            --grid-areas: "a";
+            --height: 100vh;
+            --position: relative;
+        }
+        
+        .fullscreen .a {
+            --background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect fill="%23222" width="400" height="400"/><circle cx="200" cy="200" r="100" fill="%23667eea" opacity="0.5"/></svg>') center/cover;
+        }
+        
+        .fullscreen .b {
+            --grid-area: a;  /* Same grid area! */
+            --background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+        }
+        
+        .fullscreen .c {
+            --grid-area: a;  /* Same grid area! */
+            --display: grid;
+            --place-items: center;
+            --padding: 3rem;
+        }
+        
+        .fullscreen .c .c {
+            --font-size: 4rem;
+            --font-weight: 700;
+            --color: white;
+        }
+        
+        .fullscreen .c .d {
+            --font-size: 1.5rem;
+            --color: rgba(255,255,255,0.9);
+        }
+        
+        /* Documentation Styles */
+        .docs {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 { 
+            color: #667eea; 
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        h2 {
+            color: #333;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+        
+        pre {
+            background: #f8f8f8;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .grid-visual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .grid-visual div {
+            padding: 1rem;
+            background: #f0f0f0;
+            border-radius: 0.25rem;
+            text-align: center;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- PROOF OF CONCEPT: Split Screen -->
+    <div class="zone split">
+        <div class="zone a">
+            <div>
+                <div class="zone c">Split Screen</div>
+                <div class="zone d">Two zones side by side</div>
+            </div>
+        </div>
+        <div class="zone b"></div>
+    </div>
+    
+    <!-- PROOF OF CONCEPT: Full Screen with Layers -->
+    <div class="zone fullscreen">
+        <div class="zone a back"></div>        <!-- Background image -->
+        <div class="zone b middle"></div>      <!-- Dark overlay -->
+        <div class="zone c front">             <!-- Content -->
+            <div>
+                <div class="zone c">Full Screen</div>
+                <div class="zone d">Same zones, different preset, with z-index layers</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- DOCUMENTATION -->
+    <div class="docs">
+        <h1>🎯 Zone System - Proof of Concept</h1>
+        
+        <h2>The Entire System in 5 Parts</h2>
+        
+        <pre>
+1. BASE CLASS
+   .zone { /* Maps CSS variables to properties */ }
+
+2. POSITION (Grid Areas)
+   .a { --grid-area: a; }
+   .b { --grid-area: b; }
+
+3. LAYERS (Z-index)
+   .back { --z-index: 0; }
+   .front { --z-index: 2; }
+
+4. PRESETS (Transform zones)
+   .split { --grid-areas: "a b"; }
+   .fullscreen { --grid-areas: "a"; }
+
+5. HTML (Just zones!)
+   &lt;div class="zone split"&gt;
+       &lt;div class="zone a"&gt;&lt;/div&gt;
+       &lt;div class="zone b"&gt;&lt;/div&gt;
+   &lt;/div&gt;
+        </pre>
+        
+        <h2>How It Works</h2>
+        
+        <div class="grid-visual">
+            <div>
+                <strong>Split Screen</strong><br>
+                Grid: "a b"<br>
+                Zone A = Left<br>
+                Zone B = Right
+            </div>
+            <div>
+                <strong>Full Screen</strong><br>
+                Grid: "a"<br>
+                All zones = Same area<br>
+                Z-index creates layers
+            </div>
+        </div>
+        
+        <h2>The Magic: Layering</h2>
+        <pre>
+FULL SCREEN LAYERS (all in grid area "a"):
+┌─────────────────────────┐
+│ Zone C (front/z:2)      │ ← Content
+│ ┌─────────────────────┐ │
+│ │ Zone B (middle/z:1) │ │ ← Overlay
+│ │ ┌─────────────────┐ │ │
+│ │ │ Zone A (back/z:0)│ │ │ ← Background
+│ │ └─────────────────┘ │ │
+│ └─────────────────────┘ │
+└─────────────────────────┘
+
+All three zones occupy the SAME grid area "a"
+but stack using z-index!
+        </pre>
+        
+        <h2>Key Insights</h2>
+        <ul style="line-height: 1.8;">
+            <li>✓ <strong>Everything is a zone</strong> - No semantic HTML needed</li>
+            <li>✓ <strong>Position is math</strong> - Grid areas a, b, c, d</li>
+            <li>✓ <strong>Layers via z-index</strong> - Stack zones in same area</li>
+            <li>✓ <strong>Presets transform</strong> - Same zones, different layouts</li>
+            <li>✓ <strong>~50 lines of CSS</strong> - Entire system!</li>
+        </ul>
+        
+        <h2>Why This Changes Everything</h2>
+        <pre>
+Traditional:              Zone System:
+&lt;header&gt;                  &lt;div class="zone a"&gt;
+&lt;nav&gt;                     &lt;div class="zone b"&gt;  
+&lt;main&gt;                    &lt;div class="zone c"&gt;
+&lt;aside&gt;                   &lt;div class="zone d"&gt;
+&lt;footer&gt;                  
+
+Semantic prison ❌        Mathematical freedom ✓
+Fixed purpose ❌           Transforms via presets ✓
+Deep nesting ❌            Flat architecture ✓
+Complex naming ❌          Simple zones ✓
+        </pre>
+    </div>
+</body>
+</html>

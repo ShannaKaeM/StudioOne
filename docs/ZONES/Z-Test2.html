@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Zone System - Self-Defining Variables</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* =========================================
+           THE ZONE - ALL VARIABLES SELF-DEFINE
+           ========================================= */
+        
+        .zone {
+            /* ========== COLORS (Direct HSL) ========== */
+            --color: hsl(0, 0%, 20%);
+            --background-color: hsl(0, 0%, 100%);
+            --border-color: hsl(0, 0%, 80%);
+            --fill: hsl(0, 0%, 80%);
+            --stroke: hsl(0, 0%, 70%);
+            --accent-color: hsl(220, 70%, 50%);
+            --outline-color: hsl(220, 70%, 40%);
+            --caret-color: hsl(220, 70%, 50%);
+            --background: transparent;
+            
+            /* ========== VISUAL EFFECTS ========== */
+            --background-image: none;
+            --mask-image: none;
+            --backdrop-filter: none;
+            --filter: none;
+            --mask-mode: alpha;
+            --mask-repeat: no-repeat;
+            --mask-position: center;
+            --mask-size: contain;
+            --background-size: cover;
+            --background-position: center;
+            --background-repeat: no-repeat;
+            --box-shadow: none;
+            --text-shadow: none;
+            --opacity: 1;
+            --transform: none;
+            --transform-origin: center;
+            
+            /* ========== BORDERS ========== */
+            --border-radius: 0;
+            --border-width: 0;
+            --border-style: solid;
+            --border-top-width: 0;
+            --border-right-width: 0;
+            --border-bottom-width: 0;
+            --border-left-width: 0;
+            --border-top-style: solid;
+            --border-right-style: solid;
+            --border-bottom-style: solid;
+            --border-left-style: solid;
+            --outline-width: 0;
+            --outline-style: solid;
+            --outline-offset: 0;
+            --stroke-width: 0;
+            
+            /* ========== BEHAVIOR ========== */
+            --display: block;
+            --position: relative;
+            --overflow: visible;
+            --overflow-x: visible;
+            --overflow-y: visible;
+            --visibility: visible;
+            --pointer-events: auto;
+            --user-select: auto;
+            --cursor: default;
+            --z-index: auto;
+            
+            /* ========== TYPOGRAPHY ========== */
+            --font-family: system-ui, -apple-system, sans-serif;
+            --font-size: 1rem;
+            --font-weight: 400;
+            --font-style: normal;
+            --line-height: 1.5;
+            --letter-spacing: normal;
+            --text-align: left;
+            --text-decoration: none;
+            --text-transform: none;
+            --text-overflow: clip;
+            --white-space: normal;
+            --word-break: normal;
+            --word-wrap: normal;
+            --vertical-align: baseline;
+            
+            /* ========== SIZING ========== */
+            --width: auto;
+            --height: auto;
+            --min-width: 0;
+            --max-width: none;
+            --min-height: 0;
+            --max-height: none;
+            --aspect-ratio: auto;
+            
+            /* ========== SPACING ========== */
+            --padding: 0;
+            --padding-top: 0;
+            --padding-right: 0;
+            --padding-bottom: 0;
+            --padding-left: 0;
+            --margin: 0;
+            --margin-top: 0;
+            --margin-right: 0;
+            --margin-bottom: 0;
+            --margin-left: 0;
+            
+            /* ========== POSITIONING ========== */
+            --top: auto;
+            --right: auto;
+            --bottom: auto;
+            --left: auto;
+            
+            /* ========== LAYOUT ========== */
+            --gap: 0;
+            --row-gap: 0;
+            --column-gap: 0;
+            --justify-content: flex-start;
+            --align-items: stretch;
+            --align-content: stretch;
+            --justify-items: stretch;
+            --place-items: stretch;
+            --align-self: auto;
+            --justify-self: auto;
+            --place-self: auto;
+            
+            /* ========== GRID ========== */
+            --grid-template-columns: none;
+            --grid-template-rows: none;
+            --grid-template-areas: none;
+            --grid-column: auto;
+            --grid-row: auto;
+            --grid-area: auto;
+            --grid-auto-columns: auto;
+            --grid-auto-rows: auto;
+            --grid-auto-flow: row;
+            
+            /* ========== FLEX ========== */
+            --flex-direction: row;
+            --flex-wrap: nowrap;
+            --flex-basis: auto;
+            --flex-grow: 0;
+            --flex-shrink: 1;
+            --order: 0;
+            
+            /* ========== ANIMATION ========== */
+            --animation: none;
+            --transition: all 0.3s ease;
+            
+            /* ========================================
+               APPLY ALL VARIABLES TO PROPERTIES
+               ======================================== */
+            
+            /* Colors */
+            color: var(--color);
+            background-color: var(--background-color);
+            border-color: var(--border-color);
+            fill: var(--fill);
+            stroke: var(--stroke);
+            accent-color: var(--accent-color);
+            outline-color: var(--outline-color);
+            caret-color: var(--caret-color);
+            background: var(--background);
+            
+            /* Visual Effects */
+            background-image: var(--background-image);
+            mask-image: var(--mask-image);
+            backdrop-filter: var(--backdrop-filter);
+            filter: var(--filter);
+            mask-mode: var(--mask-mode);
+            mask-repeat: var(--mask-repeat);
+            mask-position: var(--mask-position);
+            mask-size: var(--mask-size);
+            background-size: var(--background-size);
+            background-position: var(--background-position);
+            background-repeat: var(--background-repeat);
+            box-shadow: var(--box-shadow);
+            text-shadow: var(--text-shadow);
+            opacity: var(--opacity);
+            transform: var(--transform);
+            transform-origin: var(--transform-origin);
+            
+            /* Borders */
+            border-radius: var(--border-radius);
+            border-width: var(--border-width);
+            border-style: var(--border-style);
+            border-top-width: var(--border-top-width);
+            border-right-width: var(--border-right-width);
+            border-bottom-width: var(--border-bottom-width);
+            border-left-width: var(--border-left-width);
+            border-top-style: var(--border-top-style);
+            border-right-style: var(--border-right-style);
+            border-bottom-style: var(--border-bottom-style);
+            border-left-style: var(--border-left-style);
+            outline-width: var(--outline-width);
+            outline-style: var(--outline-style);
+            outline-offset: var(--outline-offset);
+            stroke-width: var(--stroke-width);
+            
+            /* Behavior */
+            display: var(--display);
+            position: var(--position);
+            overflow: var(--overflow);
+            overflow-x: var(--overflow-x);
+            overflow-y: var(--overflow-y);
+            visibility: var(--visibility);
+            pointer-events: var(--pointer-events);
+            user-select: var(--user-select);
+            cursor: var(--cursor);
+            z-index: var(--z-index);
+            
+            /* Typography */
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            font-weight: var(--font-weight);
+            font-style: var(--font-style);
+            line-height: var(--line-height);
+            letter-spacing: var(--letter-spacing);
+            text-align: var(--text-align);
+            text-decoration: var(--text-decoration);
+            text-transform: var(--text-transform);
+            text-overflow: var(--text-overflow);
+            white-space: var(--white-space);
+            word-break: var(--word-break);
+            word-wrap: var(--word-wrap);
+            vertical-align: var(--vertical-align);
+            
+            /* Sizing */
+            width: var(--width);
+            height: var(--height);
+            min-width: var(--min-width);
+            max-width: var(--max-width);
+            min-height: var(--min-height);
+            max-height: var(--max-height);
+            aspect-ratio: var(--aspect-ratio);
+            
+            /* Spacing */
+            padding: var(--padding);
+            padding-top: var(--padding-top);
+            padding-right: var(--padding-right);
+            padding-bottom: var(--padding-bottom);
+            padding-left: var(--padding-left);
+            margin: var(--margin);
+            margin-top: var(--margin-top);
+            margin-right: var(--margin-right);
+            margin-bottom: var(--margin-bottom);
+            margin-left: var(--margin-left);
+            
+            /* Positioning */
+            top: var(--top);
+            right: var(--right);
+            bottom: var(--bottom);
+            left: var(--left);
+            
+            /* Layout */
+            gap: var(--gap);
+            row-gap: var(--row-gap);
+            column-gap: var(--column-gap);
+            justify-content: var(--justify-content);
+            align-items: var(--align-items);
+            align-content: var(--align-content);
+            justify-items: var(--justify-items);
+            place-items: var(--place-items);
+            align-self: var(--align-self);
+            justify-self: var(--justify-self);
+            place-self: var(--place-self);
+            
+            /* Grid */
+            grid-template-columns: var(--grid-template-columns);
+            grid-template-rows: var(--grid-template-rows);
+            grid-template-areas: var(--grid-template-areas);
+            grid-column: var(--grid-column);
+            grid-row: var(--grid-row);
+            grid-area: var(--grid-area);
+            grid-auto-columns: var(--grid-auto-columns);
+            grid-auto-rows: var(--grid-auto-rows);
+            grid-auto-flow: var(--grid-auto-flow);
+            
+            /* Flex */
+            flex-direction: var(--flex-direction);
+            flex-wrap: var(--flex-wrap);
+            flex-basis: var(--flex-basis);
+            flex-grow: var(--flex-grow);
+            flex-shrink: var(--flex-shrink);
+            order: var(--order);
+            
+            /* Animation */
+            animation: var(--animation);
+            transition: var(--transition);
+            
+            /* Box Model */
+            box-sizing: border-box;
+        }
+        
+        /* =========================================
+           MATHEMATICAL POSITIONS (Grid Areas)
+           ========================================= */
+        .universal-helper-scope {  
+        .a { --grid-area: a; }
+        .b { --grid-area: b; }
+        .c { --grid-area: c; }
+        .d { --grid-area: d; }
+        .e { --grid-area: e; }
+        .f { --grid-area: f; }
+        .g { --grid-area: g; }
+        .h { --grid-area: h; }
+        }
+        /* =========================================
+           PRESETS - JUST CHANGE VARIABLES!
+           ========================================= */
+    .preset {
+        section {
+            --width: 100%;
+            --height: 100%;
+            --background-color: hsl(212, 58%, 42%);
+        }
+        container {
+            --width: 100%;
+            --max-width: 1200px;
+            --padding: 1rem;
+        }
+        wrapper {
+            --width: 100%;
+        }
+        
+        /* Text Presets */
+        title {
+            --font-size: 2.5rem;
+            --font-weight: 700;
+            --line-height: 1.1;
+            --margin-bottom: 1rem;
+            --color: hsl(312, 88%, 39%);
+        }
+        
+        subtitle{
+            --font-size: 1.5rem;
+            --font-weight: 600;
+            --line-height: 1.3;
+            --margin-bottom: 0.75rem;
+            --color: hsl(124, 88%, 39%);
+        }
+        
+        description {
+            --font-size: 1rem;
+            --line-height: 1.6;
+            --margin-bottom: 1rem;
+            --color: hsl(64, 85%, 43%);
+        }
+        
+        /* Layout Presets */
+        stack {
+            --display: grid;
+            --grid-template-columns: 1fr;
+            --grid-template-rows: auto 1fr auto;
+            --grid-template-areas: 
+            "a" 
+            "b" 
+            "c";
+        }
+        
+        dashboard {
+            --display: grid;
+            --grid-template-areas: 
+                "a a a"
+                "b c d"
+                "e e e";
+            --grid-template-columns: 1fr auto 1fr;
+            --grid-template-rows: auto 1fr auto;
+        }
+        layout-split {
+            --display: grid;
+            --grid-template-columns: 1fr 1fr;
+            --grid-template-areas: "a b";
+        }
+        /* Color Look Presets */
+        look1 {
+            --background-color: hsl(220, 70%, 50%);
+            --color: white;
+            --border-color: hsl(220, 70%, 40%);
+            --fill: hsl(220, 70%, 40%);
+            --stroke: hsl(220, 70%, 40%);
+            --accent-color: hsl(220, 70%, 40%);
+            --outline-color: hsl(220, 70%, 40%);
+            --caret-color: hsl(220, 70%, 40%);
+            --background: transparent;
+            --background-image: none;
+        }
+        
+        .look2 {
+            --background-color: hsl(160, 60%, 45%);
+            --color: white;
+            --border-color: hsl(160, 60%, 45%);
+            --fill: hsl(160, 60%, 45%);
+            --stroke: hsl(160, 60%, 45%);
+            --accent-color: hsl(160, 60%, 45%);
+            --outline-color: hsl(160, 60%, 45%);
+            --caret-color: hsl(160, 60%, 45%);
+            --background: hsla(160, 60%, 45%, 0.5);
+            
+        }
+    }
+        
+    
+    </style>
+</head>
+<body>
+    <!-- Page Layout with Header-Main-Footer -->
+    <div class="zone preset-section preset-stack">
+        
+        <!-- Header Zone -->
+        <div class="zone a preset-container">
+            <div class="zone title">This is the Header SectionTitle</div>
+        </div>
+        
+        <!-- Main Zone -->
+        <div class="zone main preset-main">
+            
+            <!-- Features Section with 3 Cards -->
+            <div class="zone preset-content">
+                <div class="zone title preset-section-title">Features</div>
+                
+                <!-- Cards Container -->
+                <div class="zone thirds preset-card-grid">
+                    
+                    <!-- Card 1 - Also has HMF structure! -->
+                    <div class="zone a layout-hmf preset-card">
+                        <div class="zone header">
+                            <div class="zone subtitle">Mathematical</div>
+                        </div>
+                        <div class="zone main">
+                            <div class="zone description">Everything is calculated through mathematical relationships. No fixed sizes, pure flexibility.</div>
+                        </div>
+                        <div class="zone footer">
+                            <div class="zone preset-button">Learn More</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="zone b layout-hmf preset-card">
+                        <div class="zone header">
+                            <div class="zone subtitle">Universal</div>
+                        </div>
+                        <div class="zone main">
+                            <div class="zone description">One pattern works everywhere. Cards, pages, modals - all use the same structure.</div>
+                        </div>
+                        <div class="zone footer">
+                            <div class="zone preset-button">Learn More</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="zone c layout-hmf preset-card">
+                        <div class="zone header">
+                            <div class="zone subtitle">Transformable</div>
+                        </div>
+                        <div class="zone main">
+                            <div class="zone description">Any zone can become anything through presets. Complete flexibility with no constraints.</div>
+                        </div>
+                        <div class="zone footer">
+                            <div class="zone preset-button">Learn More</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Footer Zone -->
+        <div class="zone footer preset-content preset-footer">
+            <div class="zone description">© 2024 Zone System - Everything is a Zone</div>
+        </div>
+        
+    </div>
+</body>
+</html>

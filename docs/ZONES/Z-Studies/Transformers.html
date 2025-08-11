@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone → Semantic HTML Transformer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+        
+        /* Zone System CSS (for preview) */
+        .zone {
+            display: var(--display, block);
+            grid-template-areas: var(--grid-areas);
+            grid-template-columns: var(--grid-cols);
+            grid-area: var(--grid-area);
+            padding: var(--padding, 0);
+            background: var(--background, transparent);
+            color: var(--color, inherit);
+            font-size: var(--font-size, 1rem);
+            font-weight: var(--font-weight, 400);
+        }
+        
+        .a { --grid-area: a; }
+        .b { --grid-area: b; }
+        .c { --grid-area: c; }
+        
+        .split {
+            --display: grid;
+            --grid-areas: "a b";
+            --grid-cols: 1fr 1fr;
+            --background: white;
+            --padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* UI Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .panel {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        pre {
+            background: #f8f8f8;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            overflow-x: auto;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+        
+        button:hover {
+            background: #764ba2;
+        }
+        
+        .highlight {
+            background: #ffd93d;
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.125rem;
+        }
+        
+        .rules {
+            background: #e8f4fd;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            margin: 1rem 0;
+        }
+        
+        .rules h3 {
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .rules ul {
+            margin-left: 1.5rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #667eea; margin-bottom: 2rem;">Zone → Semantic HTML Transformer</h1>
+        
+        <!-- Live Example -->
+        <div class="zone split" id="example">
+            <div class="zone a" data-label="Navigation">
+                <div class="zone c" data-content="Home About Services Contact">Navigation Menu</div>
+            </div>
+            <div class="zone b" data-label="Hero Content">
+                <div class="zone c" data-content="Welcome to Our Site" data-priority="1">Main Heading</div>
+            </div>
+        </div>
+        
+        <button onclick="transformToSemantic()">Transform to Semantic HTML</button>
+        
+        <div class="panels">
+            <!-- Original Zone HTML -->
+            <div class="panel">
+                <h2>📦 Zone HTML (Design Phase)</h2>
+                <pre id="zoneHtml">
+&lt;div class="zone split"&gt;
+    &lt;div class="zone a" data-label="Navigation"&gt;
+        &lt;div class="zone c"&gt;Navigation Menu&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="zone b" data-label="Hero Content"&gt;
+        &lt;div class="zone c" data-priority="1"&gt;Main Heading&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </pre>
+            </div>
+            
+            <!-- Transformed Semantic HTML -->
+            <div class="panel">
+                <h2>✨ Semantic HTML (Export Phase)</h2>
+                <pre id="semanticHtml">
+Click "Transform" to see the semantic version...
+                </pre>
+            </div>
+        </div>
+        
+        <!-- AI Rules -->
+        <div class="rules">
+            <h3>🤖 AI Transformation Rules</h3>
+            <ul>
+                <li><strong>Navigation patterns</strong> → <span class="highlight">&lt;nav&gt;</span></li>
+                <li><strong>Main content areas</strong> → <span class="highlight">&lt;main&gt;</span></li>
+                <li><strong>First text in hero</strong> → <span class="highlight">&lt;h1&gt;</span></li>
+                <li><strong>Repeated items</strong> → <span class="highlight">&lt;ul&gt;&lt;li&gt;</span></li>
+                <li><strong>Image zones</strong> → <span class="highlight">&lt;figure&gt;</span></li>
+                <li><strong>data-priority="1"</strong> → Primary heading</li>
+                <li><strong>data-label</strong> → ARIA labels</li>
+            </ul>
+        </div>
+        
+        <!-- Advanced Example -->
+        <div class="panel" style="margin-top: 2rem;">
+            <h2>🚀 Advanced Transformation Example</h2>
+            <pre>
+ZONE INPUT:
+&lt;div class="zone article"&gt;
+    &lt;div class="zone a" data-label="Article Header"&gt;
+        &lt;div class="zone c" data-content="Tech News" data-type="category"&gt;Category&lt;/div&gt;
+        &lt;div class="zone c" data-content="AI Transforms Web" data-priority="1"&gt;Title&lt;/div&gt;
+        &lt;div class="zone c" data-content="By John Doe, Dec 2024"&gt;Meta&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="zone b" data-label="Article Body"&gt;
+        &lt;div class="zone c"&gt;Article content here...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+AI SEMANTIC OUTPUT:
+&lt;article itemscope itemtype="https://schema.org/Article"&gt;
+    &lt;header&gt;
+        &lt;span class="category"&gt;Tech News&lt;/span&gt;
+        &lt;h1 itemprop="headline"&gt;AI Transforms Web&lt;/h1&gt;
+        &lt;div class="meta"&gt;
+            &lt;span itemprop="author"&gt;John Doe&lt;/span&gt;
+            &lt;time itemprop="datePublished" datetime="2024-12"&gt;Dec 2024&lt;/time&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div itemprop="articleBody"&gt;
+        &lt;p&gt;Article content here...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        function transformToSemantic() {
+            // Simulate AI transformation
+            const semanticOutput = `&lt;!-- SEO-Optimized Semantic HTML --&gt;
+&lt;nav role="navigation" aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;section class="hero"&gt;
+        &lt;h1&gt;Welcome to Our Site&lt;/h1&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;!-- + Schema.org microdata --&gt;
+&lt;!-- + Open Graph meta tags --&gt;
+&lt;!-- + Proper heading hierarchy --&gt;
+&lt;!-- + ARIA labels --&gt;
+&lt;!-- + Semantic landmarks --&gt;`;
+            
+            document.getElementById('semanticHtml').textContent = semanticOutput;
+            
+            // Highlight the transformation
+            document.getElementById('semanticHtml').style.background = '#e8f4fd';
+            setTimeout(() => {
+                document.getElementById('semanticHtml').style.background = '#f8f8f8';
+            }, 500);
+        }
+        
+        // AI Transformation Rules (conceptual)
+        const transformationRules = {
+            detectPatterns: {
+                navigation: ['menu', 'nav', 'links'],
+                article: ['post', 'article', 'blog'],
+                header: ['hero', 'banner', 'header'],
+                footer: ['footer', 'copyright', 'links']
+            },
+            
+            contentAnalysis: {
+                headingPriority: 'data-priority',
+                contentType: 'data-content',
+                semanticHints: 'data-label'
+            },
+            
+            seoEnhancements: {
+                schemaOrg: true,
+                openGraph: true,
+                twitterCards: true,
+                headingHierarchy: true,
+                ariaLabels: true
+            }
+        };
+        
+        console.log('Transformation Rules:', transformationRules);
+    </script>
+</body>
+</html>

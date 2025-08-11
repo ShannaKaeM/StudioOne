@@ -20,6 +20,45 @@
       "description": "Neutral color"
     }
   },
+
+  "lookPresets": {
+    "look-1": {
+      "name": "Primary Focus",
+      "backgroundColor": "hsl(0, 0%, 85%)",
+      "color": "hsl(0, 0%, 20%)",
+      "borderColor": "hsl(0, 0%, 80%)",
+      "accentColor": "hsl(179, 54%, 39%)",
+      "outlineColor": "hsl(179, 54%, 39%)",
+      "fill": "hsl(179, 54%, 39%)",
+      "stroke": "hsl(0, 0%, 50%)",
+      "caretColor": "hsl(179, 54%, 39%)",
+      "background": "hsla(0, 0%, 0%, 0.5)"
+    },
+    "look-2": {
+      "name": "Secondary Focus",
+      "backgroundColor": "hsl(179, 54%, 39%)",
+      "color": "hsl(0, 0%, 20%)",
+      "borderColor": "hsl(83, 36%, 38%)",
+      "accentColor": "hsl(83, 36%, 38%)",
+      "focusColor": "hsl(0, 0%, 20%)",
+      "fill": "hsl(0, 0%, 50%)",
+      "stroke": "hsl(83, 36%, 38%)",
+      "caretColor": "hsl(0, 0%, 50%)",
+      "background": "hsla(0, 0%, 0%, 0.5)"
+    },
+    "look-3": {
+      "name": "Neutral Focus",
+      "backgroundColor": "hsl(0, 0%, 50%)",
+      "color": "hsl(83, 36%, 38%)",
+      "borderColor": "hsl(179, 54%, 39%)",
+      "accentColor": "hsl(83, 36%, 38%)",
+      "focusColor": "hsl(83, 36%, 38%)",
+      "fill": "hsl(83, 36%, 38%)",
+      "stroke": "hsl(179, 54%, 39%)",
+      "caretColor": "hsl(83, 36%, 38%)",
+      "background": "hsla(0, 0%, 0%, 0.5)"
+    }
+  },
   
   "variables": {
     "color": {

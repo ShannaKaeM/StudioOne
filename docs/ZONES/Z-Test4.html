@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone System Test 4 - Clean Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        
+        /* =========================================
+           1. BASE ONE CLASS - All Variables
+           ========================================= */
+        
+        .one {
+            /* ========== COLORS (9 base) ========== */
+            --color: hsl(0, 0%, 80%);
+            --background-color: hsl(0, 0%, 10%);
+            --border-color: hsl(0, 0%, 20%);
+            --fill: hsl(0, 0%, 80%);
+            --stroke: hsl(0, 0%, 70%);
+            --accent-color: hsl(220, 70%, 50%);
+            --outline-color: hsl(220, 70%, 40%);
+            --caret-color: hsl(220, 70%, 50%);
+            --background: transparent;
+            
+            /* ========== VISUAL EFFECTS ========== */
+            --background-image: none;
+            --mask-image: none;
+            --backdrop-filter: none;
+            --filter: none;
+            --mask-mode: alpha;
+            --mask-repeat: no-repeat;
+            --mask-position: center;
+            --mask-size: contain;
+            --background-size: cover;
+            --background-position: center;
+            --background-repeat: no-repeat;
+            --box-shadow: none;
+            --text-shadow: none;
+            --opacity: 1;
+            --transform: none;
+            --transform-origin: center;
+            
+            /* ========== BORDERS ========== */
+            --border-radius: 0;
+            --border-width: 0;
+            --border-style: solid;
+            --outline-width: 0;
+            --outline-style: solid;
+            --outline-offset: 0;
+            --stroke-width: 0;
+            
+            /* ========== BEHAVIOR ========== */
+            --display: block;
+            --position: relative;
+            --overflow: visible;
+            --visibility: visible;
+            --pointer-events: auto;
+            --user-select: auto;
+            --cursor: default;
+            --z-index: auto;
+            
+            /* ========== TYPOGRAPHY ========== */
+            --font-family: system-ui, -apple-system, sans-serif;
+            --font-size: 1rem;
+            --font-weight: 400;
+            --font-style: normal;
+            --line-height: 1.5;
+            --letter-spacing: normal;
+            --text-align: left;
+            --text-decoration: none;
+            --text-transform: none;
+            --white-space: normal;
+            --vertical-align: baseline;
+            
+            /* ========== SIZING ========== */
+            --width: auto;
+            --height: auto;
+            --min-width: 0;
+            --max-width: none;
+            --min-height: 0;
+            --max-height: none;
+            --aspect-ratio: auto;
+            
+            /* ========== SPACING ========== */
+            --padding: 0;
+            --margin: 0;
+            
+            /* ========== POSITIONING ========== */
+            --top: auto;
+            --right: auto;
+            --bottom: auto;
+            --left: auto;
+            
+            /* ========== LAYOUT ========== */
+            --gap: 0;
+            --justify-content: flex-start;
+            --align-items: stretch;
+            --place-items: stretch;
+            
+            /* ========== GRID ========== */
+            --grid-template-columns: none;
+            --grid-template-rows: none;
+            --grid-template-areas: none;
+            --grid-area: auto;
+            
+            /* ========== FLEX ========== */
+            --flex-direction: row;
+            --flex-wrap: nowrap;
+            --flex-grow: 0;
+            --flex-shrink: 1;
+            
+            /* ========== ANIMATION ========== */
+            --animation: none;
+            --transition: none;
+            
+            /* ========== MATHEMATICAL BASE ========== */
+            --base: 1rem;
+            --ratio: 1.25;
+            
+            /* ========================================
+               APPLY ALL VARIABLES TO CSS PROPERTIES
+               ======================================== */
+            
+            color: var(--color);
+            background-color: var(--background-color);
+            border-color: var(--border-color);
+            fill: var(--fill);
+            stroke: var(--stroke);
+            accent-color: var(--accent-color);
+            outline-color: var(--outline-color);
+            caret-color: var(--caret-color);
+            background: var(--background);
+            
+            background-image: var(--background-image);
+            mask-image: var(--mask-image);
+            backdrop-filter: var(--backdrop-filter);
+            filter: var(--filter);
+            background-size: var(--background-size);
+            background-position: var(--background-position);
+            background-repeat: var(--background-repeat);
+            box-shadow: var(--box-shadow);
+            text-shadow: var(--text-shadow);
+            opacity: var(--opacity);
+            transform: var(--transform);
+            transform-origin: var(--transform-origin);
+            
+            border-radius: var(--border-radius);
+            border-width: var(--border-width);
+            border-style: var(--border-style);
+            outline-width: var(--outline-width);
+            outline-style: var(--outline-style);
+            outline-offset: var(--outline-offset);
+            stroke-width: var(--stroke-width);
+            
+            display: var(--display);
+            position: var(--position);
+            overflow: var(--overflow);
+            visibility: var(--visibility);
+            pointer-events: var(--pointer-events);
+            user-select: var(--user-select);
+            cursor: var(--cursor);
+            z-index: var(--z-index);
+            
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            font-weight: var(--font-weight);
+            font-style: var(--font-style);
+            line-height: var(--line-height);
+            letter-spacing: var(--letter-spacing);
+            text-align: var(--text-align);
+            text-decoration: var(--text-decoration);
+            text-transform: var(--text-transform);
+            white-space: var(--white-space);
+            vertical-align: var(--vertical-align);
+            
+            width: var(--width);
+            height: var(--height);
+            min-width: var(--min-width);
+            max-width: var(--max-width);
+            min-height: var(--min-height);
+            max-height: var(--max-height);
+            aspect-ratio: var(--aspect-ratio);
+            
+            padding: var(--padding);
+            margin: var(--margin);
+            
+            top: var(--top);
+            right: var(--right);
+            bottom: var(--bottom);
+            left: var(--left);
+            
+            gap: var(--gap);
+            justify-content: var(--justify-content);
+            align-items: var(--align-items);
+            place-items: var(--place-items);
+            
+            grid-template-columns: var(--grid-template-columns);
+            grid-template-rows: var(--grid-template-rows);
+            grid-template-areas: var(--grid-template-areas);
+            grid-area: var(--grid-area);
+            
+            flex-direction: var(--flex-direction);
+            flex-wrap: var(--flex-wrap);
+            flex-grow: var(--flex-grow);
+            flex-shrink: var(--flex-shrink);
+            
+            animation: var(--animation);
+            transition: var(--transition);
+        }
+        
+        /* =========================================
+           2. ELEMENT SCOPES (Base UI Elements)
+           ========================================= */
+
+        .wrapper {
+            --display: block;
+            --width: 100%;
+            --height: 100%;
+        }
+        
+        .button {
+            --display: inline-flex;
+            --align-items: center;
+            --justify-content: center;
+            --padding: 0.5rem 1rem;
+            --font-size: 0.875rem;
+            --font-weight: 500;
+            --line-height: 1.2;
+            --border-radius: 0.375rem;
+            --border-width: 1px;
+            --cursor: pointer;
+            --user-select: none;
+            --height: 2.5rem;
+            --transition: all 0.2s ease;
+        }
+        
+        .input {
+            --display: block;
+            --width: 100%;
+            --padding: 0.5rem 0.75rem;
+            --font-size: 1rem;
+            --line-height: 1.5;
+            --border-width: 1px;
+            --border-radius: 0.375rem;
+            --outline: none;
+            --transition: border-color 0.2s ease;
+        }
+        
+        
+        
+        /* =========================================
+           3. POSITION HELPERS (Grid Areas + Styling)
+           ========================================= */
+        
+        .a {
+            --grid-area: a;
+            --background-color: hsla(331, 100%, 50%, 0.1);
+            --border-color: hsl(331, 100%, 50%);
+            --border-width: 1px;
+            --width: 100%;
+        }
+        
+        .b {
+            --grid-area: b;
+            --background-color: hsla(120, 100%, 50%, 0.1);
+            --border-color: hsl(120, 100%, 50%);
+            --width: 100%;
+            --height: 100%;
+        }
+        
+        .c {
+            --grid-area: c;
+            --background-color: hsla(240, 100%, 50%, 0.1);
+            --border-color: hsl(240, 100%, 50%);
+            --width: 100%;
+            --height: 100%;
+        }
+        
+        .d {
+            --grid-area: d;
+            --background-color: hsla(60, 100%, 50%, 0.1);
+            --border-color: hsl(60, 100%, 50%);
+            --width: 100%;
+            --height: 100%;
+        }
+        
+        .e {
+            --grid-area: e;
+            --background-color: hsla(180, 100%, 50%, 0.1);
+            --border-color: hsl(180, 100%, 50%);
+            --width: 100%;
+            --height: 100%;
+        }
+        
+        /* =========================================
+           4. LAYOUT PRESETS
+           ========================================= */
+        
+        .layout-dashboard {
+            --display: grid;
+            --grid-template-areas: "a a a" "b c d" "e e e";
+            --grid-template-columns: 200px 1fr 300px;
+            --grid-template-rows: 60px 1fr 40px;
+            --gap: 1px;
+            --min-height: 100vh;
+            --width: 100%;
+        }
+        
+        .layout-split {
+            --display: grid;
+            --grid-template-areas: "a b";
+            --grid-template-columns: 1fr 1fr;
+            --gap: 1rem;
+        }
+        
+        .layout-stack {
+            --display: grid;
+            --grid-template-columns: 1fr;
+            --gap: 1rem;
+        }
+        
+        /* =========================================
+           5. LOOK PRESETS (Color Themes)
+           ========================================= */
+        
+        /* Look 1 - Pink Focus */
+        .look1 {
+            --color: hsl(240, 100%, 50%);           /* blue text */
+            --background-color: hsl(331, 100%, 50%); /* pink surface */
+            --border-color: hsl(331, 100%, 50%);     /* pink border */
+            --accent-color: hsl(120, 100%, 50%);     /* green accent */
+            --outline-color: hsl(120, 100%, 50%);    /* green focus */
+            --fill: hsl(240, 100%, 50%);             /* blue fill */
+            --stroke: hsl(331, 100%, 50%);           /* pink stroke */
+            --caret-color: hsl(120, 100%, 50%);      /* green cursor */
+            --background: hsla(331, 100%, 50%, 0.05); /* pink overlay */
+        }
+        
+        /* Look 2 - Green Focus */
+        .look2 {
+            --color: hsl(240, 100%, 50%);           /* blue text */
+            --background-color: hsl(120, 100%, 50%); /* green surface */
+            --border-color: hsl(120, 100%, 50%);     /* green border */
+            --accent-color: hsl(331, 100%, 50%);     /* pink accent */
+            --outline-color: hsl(331, 100%, 50%);    /* pink focus */
+            --fill: hsl(240, 100%, 50%);             /* blue fill */
+            --stroke: hsl(120, 100%, 50%);           /* green stroke */
+            --caret-color: hsl(331, 100%, 50%);      /* pink cursor */
+            --background: hsla(120, 100%, 50%, 0.05); /* green overlay */
+        }
+        
+        /* Look 3 - Blue Focus */
+        .look3 {
+            --color: hsl(331, 100%, 50%);           /* pink text */
+            --background-color: hsl(240, 100%, 50%); /* blue surface */
+            --border-color: hsl(240, 100%, 50%);     /* blue border */
+            --accent-color: hsl(331, 100%, 50%);     /* pink accent */
+            --outline-color: hsl(331, 100%, 50%);    /* pink focus */
+            --fill: hsl(331, 100%, 50%);             /* pink fill */
+            --stroke: hsl(240, 100%, 50%);           /* blue stroke */
+            --caret-color: hsl(331, 100%, 50%);      /* pink cursor */
+            --background: hsla(240, 100%, 50%, 0.05); /* blue overlay */
+        }
+        
+        /* =========================================
+           6. INTERACTIVE PRESETS
+           ========================================= */
+        
+        .interactive:hover {
+            --opacity: 0.8;
+            --transform: translateY(-1px);
+        }
+        
+        .interactive:active {
+            --transform: translateY(0);
+        }
+        
+        /* =========================================
+           7. ZONE COMPONENT (Enhanced Zone)
+           ========================================= */
+        
+        .zone-component {
+            --display: grid;
+            --place-items: center;
+            --padding: 1.5rem;
+            --border-width: 3px;
+            --border-radius: 8px;
+            --width: 100%;
+            --height: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Simple Dashboard Example -->
+    <div class="one layout-dashboard">
+        
+        <!-- Header Zone -->
+        <div class="one a" data-label="Header">
+            <h1>Zone System Dashboard</h1>
+        </div>
+        
+        <!-- Sidebar Zone -->
+        <div class="one b" data-label="Sidebar">
+            <div class="one button interactive look1">Button 1</div>
+            <div class="one button interactive look2">Button 2</div>
+            <div class="one button interactive look3">Button 3</div>
+        </div>
+        
+        <!-- Main Content Zone -->
+        <div class="one c" data-label="Main">
+            <div class="one card">
+                <h2>Main Content Area</h2>
+                <p>This is a zone-based layout system where everything is a zone.</p>
+                <div class="one input" placeholder="Type something..."></div>
+            </div>
+        </div>
+        
+        <!-- Sidebar Right Zone -->
+        <div class="one d" data-label="Editor">
+            <div class="one layout-stack">
+                <div class="one card look1">
+                    <h3>Card with Look 1</h3>
+                    <p>Pink focused theme</p>
+                </div>
+                <div class="one card look2">
+                    <h3>Card with Look 2</h3>
+                    <p>Green focused theme</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Zone -->
+        <div class="one e" data-label="Footer">
+            <p>© 2024 Zone System - Everything is transformable</p>
+        </div>
+        
+    </div>
+</body>
+</html>

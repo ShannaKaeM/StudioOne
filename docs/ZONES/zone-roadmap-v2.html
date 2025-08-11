@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio ONE - Pure Preset System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff0080, #00ff88, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0080, #00ff88, #0080ff);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+        
+        /* Visual Diagrams */
+        .diagram {
+            background: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .flow-item {
+            background: #222;
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            position: relative;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+        
+        .flow-item:hover {
+            border-color: #00ff88;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        .arrow {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 2px;
+            background: #666;
+        }
+        
+        .arrow::after {
+            content: '▶';
+            position: absolute;
+            right: -10px;
+            top: -8px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: #ff0080;
+            box-shadow: 0 4px 20px rgba(255, 0, 128, 0.2);
+        }
+        
+        .card h4 {
+            color: #ff0080;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Visual Examples */
+        .zone-example {
+            background: #000;
+            border: 2px dashed #666;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .zone-example::before {
+            content: 'ZONE';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #000;
+            padding: 0 10px;
+            color: #666;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+        
+        .preset-badge {
+            display: inline-block;
+            background: #ff0080;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.25rem;
+        }
+        
+        /* Code Examples */
+        .code-block {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .code-block code {
+            color: #00ff88;
+        }
+        
+        /* Transformation Examples */
+        .transformation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .transform-box {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 2px solid #333;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .transform-box::before {
+            content: attr(data-preset);
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Preset Transformations */
+        .preset-hero {
+            background: linear-gradient(135deg, #1a0033, #330066);
+            color: #fff;
+            font-size: 2rem;
+            padding: 3rem;
+            min-height: 300px;
+        }
+        
+        .preset-card {
+            background: #1a1a1a;
+            border: 1px solid #444;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .preset-button {
+            background: #ff0080;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 24px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .preset-minimal {
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: inherit;
+        }
+        
+        /* Variable Display */
+        .variable-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin: 1rem 0;
+            font-size: 0.8rem;
+        }
+        
+        .variable {
+            background: #222;
+            padding: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+            font-family: monospace;
+            color: #00ff88;
+        }
+        
+        /* Big Concept */
+        .big-concept {
+            background: #000;
+            border: 3px solid #ff0080;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .big-concept h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff0080;
+        }
+        
+        .big-concept p {
+            font-size: 1.2rem;
+            color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .flow-diagram {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Studio ONE Pure Preset System</h1>
+        <p class="subtitle">No tokens. No semantics. Just variables and presets.</p>
+        
+        <!-- Core Concept -->
+        <div class="big-concept">
+            <h3>EVERYTHING IS A PRESET</h3>
+            <p>
+                We don't define what variables mean. We don't create tokens. 
+                We have variables that can be ANYTHING. Presets transform zones 
+                by setting these variables. That's it.
+            </p>
+        </div>
+        
+        <!-- Variable System -->
+        <section class="section">
+            <h2>1. Just Variables</h2>
+            
+            <div class="diagram">
+                <h3>No Semantic Naming - Just Numbers</h3>
+                <div class="variable-grid">
+                    <div class="variable">--color-1</div>
+                    <div class="variable">--color-2</div>
+                    <div class="variable">--color-3</div>
+                    <div class="variable">--color-4</div>
+                    <div class="variable">--color-5</div>
+                    <div class="variable">--size-1</div>
+                    <div class="variable">--size-2</div>
+                    <div class="variable">--size-3</div>
+                    <div class="variable">--size-4</div>
+                    <div class="variable">--size-5</div>
+                    <div class="variable">--space-1</div>
+                    <div class="variable">--space-2</div>
+                    <div class="variable">--space-3</div>
+                    <div class="variable">--space-4</div>
+                    <div class="variable">--space-5</div>
+                    <div class="variable">--radius-1</div>
+                    <div class="variable">--radius-2</div>
+                    <div class="variable">--radius-3</div>
+                    <div class="variable">--radius-4</div>
+                    <div class="variable">--radius-5</div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; color: #666;">
+                    + 83 more variables... all just numbers, no meanings
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>What Variables AREN'T</h4>
+                    <ul style="color: #ff4444;">
+                        <li>❌ NOT tokens</li>
+                        <li>❌ NOT semantic (no "primary", "surface", etc.)</li>
+                        <li>❌ NOT predefined purposes</li>
+                        <li>❌ NOT limited in use</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>What Variables ARE</h4>
+                    <ul style="color: #44ff44;">
+                        <li>✅ Just numbered values</li>
+                        <li>✅ Can be ANYTHING</li>
+                        <li>✅ Transformed by presets</li>
+                        <li>✅ 103 possibilities per zone</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Zone + Preset System -->
+        <section class="section">
+            <h2>2. Zones Transform Through Presets</h2>
+            
+            <div class="diagram">
+                <h3>One Zone, Many Presets</h3>
+                <div class="zone-example">
+                    <code>&lt;div class="zone a"&gt;</code>
+                    <p style="font-size: 1.5rem; margin: 1rem 0;">I am just a zone</p>
+                    <code>&lt;/div&gt;</code>
+                </div>
+                
+                <p style="text-align: center; margin: 2rem 0; font-size: 2rem;">↓</p>
+                
+                <div class="transformation-grid">
+                    <div class="transform-box preset-hero" data-preset="hero">
+                        Same Zone<br>
+                        + Hero Preset
+                    </div>
+                    <div class="transform-box preset-card" data-preset="card">
+                        Same Zone<br>
+                        + Card Preset
+                    </div>
+                    <div class="transform-box preset-button" data-preset="button">
+                        Same Zone<br>
+                        + Button Preset
+                    </div>
+                    <div class="transform-box preset-minimal" data-preset="minimal">
+                        Same Zone<br>
+                        + Minimal Preset
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-block">
+                <code>
+/* Presets just set variables - they don't define meaning */<br><br>
+.preset-anything {<br>
+&nbsp;&nbsp;--color: var(--color-3);      /* could be ANY color */<br>
+&nbsp;&nbsp;--background: var(--color-1); /* could be ANY color */<br>
+&nbsp;&nbsp;--padding: var(--space-4);    /* could be ANY space */<br>
+&nbsp;&nbsp;--font-size: var(--size-2);   /* could be ANY size */<br>
+&nbsp;&nbsp;/* ... any of the 103 variables */<br>
+}
+                </code>
+            </div>
+        </section>
+        
+        <!-- Preset Hierarchy -->
+        <section class="section">
+            <h2>3. Preset Levels (Not Semantic Levels)</h2>
+            
+            <div class="diagram">
+                <div class="flow-diagram">
+                    <div class="flow-item">
+                        <strong>Level 1</strong><br>
+                        Single Zone<br>
+                        Presets
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="flow-item">
+                        <strong>Level 2</strong><br>
+                        Multi-Zone<br>
+                        Presets
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="flow-item">
+                        <strong>Level 3</strong><br>
+                        Layout<br>
+                        Presets
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <h4>Level 1: Single Zone</h4>
+                    <p>Presets that transform one zone</p>
+                    <div class="code-block">
+                        <code>
+.preset-big {<br>
+&nbsp;&nbsp;--size: 4rem;<br>
+&nbsp;&nbsp;--weight: 700;<br>
+}
+                        </code>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Level 2: Zone Groups</h4>
+                    <p>Presets for multiple zones working together</p>
+                    <div class="code-block">
+                        <code>
+.preset-stack {<br>
+&nbsp;&nbsp;--gap: 2rem;<br>
+&nbsp;&nbsp;--direction: column;<br>
+}
+                        </code>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Level 3: Layouts</h4>
+                    <p>Presets defining spatial arrangements</p>
+                    <div class="code-block">
+                        <code>
+.preset-split {<br>
+&nbsp;&nbsp;--grid: "a b";<br>
+&nbsp;&nbsp;--columns: 1fr 1fr;<br>
+}
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pure Math System -->
+        <section class="section">
+            <h2>4. Mathematical Relationships (Not Tokens)</h2>
+            
+            <div class="diagram">
+                <h3>Variables Can Have Mathematical Relationships</h3>
+                <div class="code-block">
+                    <code>
+/* Base values - just numbers */<br>
+--base: 1rem;<br>
+--ratio: 1.25;<br><br>
+
+/* Calculated values - still just numbers */<br>
+--size-1: calc(var(--base) / var(--ratio));<br>
+--size-2: var(--base);<br>
+--size-3: calc(var(--base) * var(--ratio));<br>
+--size-4: calc(var(--base) * var(--ratio) * var(--ratio));<br>
+--size-5: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio));<br><br>
+
+/* These aren't "font sizes" or "spacing" - they're just calculated numbers */
+                    </code>
+                </div>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Color Math</h4>
+                    <div class="code-block">
+                        <code>
+--color-1: hsl(0, 50%, 50%);<br>
+--color-2: hsl(120, 50%, 50%);<br>
+--color-3: hsl(240, 50%, 50%);<br>
+/* Just numbers on a wheel */
+                        </code>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h4>Size Math</h4>
+                    <div class="code-block">
+                        <code>
+--size-1: 0.8rem;<br>
+--size-2: 1rem;<br>
+--size-3: 1.25rem;<br>
+/* Just mathematical progression */
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works -->
+        <section class="section">
+            <h2>5. How Presets Work</h2>
+            
+            <div class="diagram">
+                <h3>Preset Application Flow</h3>
+                <div class="flow-diagram">
+                    <div class="flow-item">
+                        Zone<br>
+                        (103 variables)
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="flow-item">
+                        Apply Preset<br>
+                        (sets variables)
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="flow-item">
+                        Transformed<br>
+                        Zone
+                    </div>
+                </div>
+            </div>
+            
+            <div class="big-concept" style="background: #1a1a1a; border-color: #00ff88;">
+                <h3 style="color: #00ff88;">The Magic</h3>
+                <p>
+                    A preset doesn't say "make this a button" or "style this as a header".<br>
+                    A preset just says "set these variables to these values".<br>
+                    The zone transforms based on those values. Period.
+                </p>
+            </div>
+            
+            <div class="code-block">
+                <code>
+/* User labels zones for their reference - NOT for the system */<br>
+&lt;div class="zone a" data-label="My Navigation"&gt;<br><br>
+
+/* System doesn't care about the label - only presets matter */<br>
+.zone.a {<br>
+&nbsp;&nbsp;/* Has all 103 variables available */<br>
+&nbsp;&nbsp;/* Preset will override specific ones */<br>
+}<br><br>
+
+/* Apply preset */<br>
+&lt;div class="zone a preset-navbar" data-label="My Navigation"&gt;<br><br>
+
+/* Preset just sets variables */<br>
+.preset-navbar {<br>
+&nbsp;&nbsp;--height: 60px;<br>
+&nbsp;&nbsp;--background: var(--color-1);<br>
+&nbsp;&nbsp;--padding: var(--space-3);<br>
+&nbsp;&nbsp;/* That's it - no semantic meaning */<br>
+}
+                </code>
+            </div>
+        </section>
+        
+        <!-- The Revolution -->
+        <section class="section">
+            <h2>6. Why This Is Revolutionary</h2>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Traditional Systems</h4>
+                    <ul style="color: #ff4444;">
+                        <li>Define tokens with meaning</li>
+                        <li>Create semantic relationships</li>
+                        <li>Lock you into decisions</li>
+                        <li>Require understanding the system</li>
+                        <li>Limited by predefined uses</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Our System</h4>
+                    <ul style="color: #44ff44;">
+                        <li>Variables have no meaning</li>
+                        <li>Presets create all relationships</li>
+                        <li>Infinite possibilities</li>
+                        <li>No system to learn</li>
+                        <li>Transform anything to anything</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="big-concept" style="margin-top: 3rem;">
+                <h3>PRESETS ARE THE SYSTEM</h3>
+                <p>
+                    Not tokens. Not semantics. Not predefined relationships.<br>
+                    Just zones + variables + presets = infinite design possibilities.
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

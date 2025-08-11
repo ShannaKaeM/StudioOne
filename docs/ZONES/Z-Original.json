@@ -1,0 +1,939 @@
+{
+    "version": "4.0.0",
+    "name": "Studio1 UI Theme - 4-Layer Atomic Architecture",
+    "description": "Revolutionary 4-layer system: Variables > Base Elements > Semantic Elements > Components > Sections",
+    
+    "brandColors": {
+      "color1": {
+        "h": 331,
+        "s": 100,
+        "l": 50,
+        "name": "Bright Pink"
+      },
+      "color2": {
+        "h": 120,
+        "s": 100,
+        "l": 50,
+        "name": "Bright Green"
+      },
+      "color3": {
+        "h": 240,
+        "s": 100,
+        "l": 50,
+        "name": "Bright Blue"
+      }
+    },
+    
+    "lookPresets": {
+      "look-1": {
+        "name": "Pink Focus",
+        "surface": "color1",
+        "content": "color3",
+        "border": "color1",
+        "accent": "color2",
+        "focus": "color2",
+        "svgFill": "color3",
+        "svgStroke": "color1",
+        "cursor": "color2",
+        "backgroundOverlay": "color1"
+      },
+      "look-2": {
+        "name": "Orange Focus", 
+        "surface": "color2",
+        "content": "color3",
+        "border": "color2",
+        "accent": "color1",
+        "focus": "color1",
+        "svgFill": "color3",
+        "svgStroke": "color2",
+        "cursor": "color1",
+        "backgroundOverlay": "color2"
+      },
+      "look-3": {
+        "name": "Neutral Focus",
+        "surface": "color3",
+        "content": "color1",
+        "border": "color3",
+        "accent": "color1",
+        "focus": "color1",
+        "svgFill": "color1",
+        "svgStroke": "color3",
+        "cursor": "color1",
+        "backgroundOverlay": "color3"
+      }
+    },
+    
+    "uiVariables": {
+        "color": {
+          "defaultValue": "var(--ui-content, var(--color3))",
+          "type": "color",
+          "category": "semantic",
+          "description": "Text color",
+          "cssProperty": "--ui-color",
+          "mapsTo": "color"
+        },
+        "backgroundColor": {
+          "defaultValue": "var(--ui-surface, var(--color1))",
+          "type": "color",
+          "category": "semantic",
+          "description": "Surface color",
+          "cssProperty": "--ui-background-color",
+          "mapsTo": "background-color"
+        },
+        "borderColor": {
+          "defaultValue": "var(--ui-border, var(--color1))",
+          "type": "color",
+          "category": "semantic",
+          "description": "Border color",
+          "cssProperty": "--ui-border-color",
+          "mapsTo": "border-color"
+        },
+        "fill": {
+          "defaultValue": "var(--ui-fill, var(--color3))",
+          "type": "color",
+          "category": "semantic",
+          "description": "SVG fill color",
+          "cssProperty": "--ui-fill",
+          "mapsTo": "fill"
+        },
+        "stroke": {
+          "defaultValue": "var(--ui-stroke, var(--color1))",
+          "type": "color",
+          "category": "semantic",
+          "description": "SVG stroke color",
+          "cssProperty": "--ui-stroke",
+          "mapsTo": "stroke"
+        },
+        "accentColor": {
+          "defaultValue": "var(--ui-accent, var(--color2))",
+          "type": "color",
+          "category": "semantic",
+          "description": "Facette accent color",
+          "cssProperty": "--ui-accent-color",
+          "mapsTo": "accent-color"
+        },
+        "outlineColor": {
+          "defaultValue": "var(--ui-focus, var(--color2))",
+          "type": "color",
+          "category": "semantic",
+          "description": "Focus outline color",
+          "cssProperty": "--ui-outline-color",
+          "mapsTo": "outline-color"
+        },
+        "caretColor": {
+          "defaultValue": "var(--ui-cursor, var(--color2))",
+          "type": "color",
+          "category": "semantic",
+          "description": "Cursor color",
+          "cssProperty": "--ui-caret-color",
+          "mapsTo": "caret-color"
+        },
+        "background": {
+          "defaultValue": "var(--ui-background-overlay, hsl(0, 0%, 15%))",
+          "type": "color",
+          "category": "semantic",
+          "description": "Background overlay color",
+          "cssProperty": "--ui-background",
+          "mapsTo": "background"
+        },
+        "backgroundImage": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-background-image"
+        },
+        "maskImage": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-mask-image"
+        },
+        "backdropFilter": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-backdrop-filter"
+        },
+        "filter": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-filter"
+        },
+        "maskMode": {
+          "defaultValue": "alpha",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-mask-mode"
+        },
+        "maskRepeat": {
+          "defaultValue": "no-repeat",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-mask-repeat"
+        },
+        "maskPosition": {
+          "defaultValue": "center",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-mask-position"
+        },
+        "maskSize": {
+          "defaultValue": "contain",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-mask-size"
+        },
+        "backgroundSize": {
+          "defaultValue": "cover",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-background-size"
+        },
+        "backgroundPosition": {
+          "defaultValue": "center",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-background-position"
+        },
+        "backgroundRepeat": {
+          "defaultValue": "no-repeat",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-background-repeat"
+        },
+        "boxShadow": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-box-shadow"
+        },
+        "textShadow": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-text-shadow"
+        },
+        "opacity": {
+          "defaultValue": "1",
+          "type": "number",
+          "category": "visual",
+          "cssProperty": "--ui-opacity"
+        },
+        "transform": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-transform"
+        },
+        "transformOrigin": {
+          "defaultValue": "center",
+          "type": "string",
+          "category": "visual",
+          "cssProperty": "--ui-transform-origin"
+        },
+        "borderRadius": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-border-radius"
+        },
+        "borderWidth": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-border-width"
+        },
+        "borderStyle": {
+          "defaultValue": "solid",
+          "type": "string",
+          "category": "border",
+          "cssProperty": "--ui-border-style"
+        },
+        "borderTopWidth": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-border-top-width"
+        },
+        "borderRightWidth": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-border-right-width"
+        },
+        "borderBottomWidth": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-border-bottom-width"
+        },
+        "borderLeftWidth": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-border-left-width"
+        },
+        "borderTopStyle": {
+          "defaultValue": "solid",
+          "type": "string",
+          "category": "border",
+          "cssProperty": "--ui-border-top-style"
+        },
+        "borderRightStyle": {
+          "defaultValue": "solid",
+          "type": "string",
+          "category": "border",
+          "cssProperty": "--ui-border-right-style"
+        },
+        "borderBottomStyle": {
+          "defaultValue": "solid",
+          "type": "string",
+          "category": "border",
+          "cssProperty": "--ui-border-bottom-style"
+        },
+        "borderLeftStyle": {
+          "defaultValue": "solid",
+          "type": "string",
+          "category": "border",
+          "cssProperty": "--ui-border-left-style"
+        },
+        "outlineWidth": {
+          "defaultValue": "0px",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-outline-width"
+        },
+        "outlineStyle": {
+          "defaultValue": "solid",
+          "type": "string",
+          "category": "border",
+          "cssProperty": "--ui-outline-style"
+        },
+        "outlineOffset": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "border",
+          "cssProperty": "--ui-outline-offset"
+        },
+        "strokeWidth": {
+          "defaultValue": "0",
+          "type": "number",
+          "category": "border",
+          "cssProperty": "--ui-stroke-width"
+        },
+        "display": {
+          "defaultValue": "block",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-display"
+        },
+        "position": {
+          "defaultValue": "relative",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-position"
+        },
+        "overflow": {
+          "defaultValue": "visible",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-overflow"
+        },
+        "overflowX": {
+          "defaultValue": "visible",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-overflow-x"
+        },
+        "overflowY": {
+          "defaultValue": "visible",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-overflow-y"
+        },
+        "visibility": {
+          "defaultValue": "visible",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-visibility"
+        },
+        "pointerEvents": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-pointer-events"
+        },
+        "userSelect": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-user-select"
+        },
+        "cursor": {
+          "defaultValue": "default",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-cursor-type",
+          "mapsTo": "cursor"
+        },
+        "zIndex": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "behavior",
+          "cssProperty": "--ui-z-index"
+        },
+        "fontFamily": {
+          "defaultValue": "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-font-family"
+        },
+        "fontSize": {
+          "defaultValue": "1rem",
+          "type": "dimension",
+          "category": "typography",
+          "cssProperty": "--ui-font-size"
+        },
+        "fontWeight": {
+          "defaultValue": "400",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-font-weight"
+        },
+        "fontStyle": {
+          "defaultValue": "normal",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-font-style"
+        },
+        "lineHeight": {
+          "defaultValue": "1.5",
+          "type": "number",
+          "category": "typography",
+          "cssProperty": "--ui-line-height"
+        },
+        "letterSpacing": {
+          "defaultValue": "normal",
+          "type": "dimension",
+          "category": "typography",
+          "cssProperty": "--ui-letter-spacing"
+        },
+        "textAlign": {
+          "defaultValue": "left",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-text-align"
+        },
+        "textDecoration": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-text-decoration"
+        },
+        "textTransform": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-text-transform"
+        },
+        "textOverflow": {
+          "defaultValue": "clip",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-text-overflow"
+        },
+        "whiteSpace": {
+          "defaultValue": "normal",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-white-space"
+        },
+        "wordBreak": {
+          "defaultValue": "normal",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-word-break"
+        },
+        "wordWrap": {
+          "defaultValue": "normal",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-word-wrap"
+        },
+        "verticalAlign": {
+          "defaultValue": "baseline",
+          "type": "string",
+          "category": "typography",
+          "cssProperty": "--ui-vertical-align"
+        },
+        "width": {
+          "defaultValue": "auto",
+          "type": "dimension",
+          "category": "sizing",
+          "cssProperty": "--ui-width"
+        },
+        "height": {
+          "defaultValue": "auto",
+          "type": "dimension",
+          "category": "sizing",
+          "cssProperty": "--ui-height"
+        },
+        "minWidth": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "sizing",
+          "cssProperty": "--ui-min-width"
+        },
+        "maxWidth": {
+          "defaultValue": "none",
+          "type": "dimension",
+          "category": "sizing",
+          "cssProperty": "--ui-max-width"
+        },
+        "minHeight": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "sizing",
+          "cssProperty": "--ui-min-height"
+        },
+        "maxHeight": {
+          "defaultValue": "none",
+          "type": "dimension",
+          "category": "sizing",
+          "cssProperty": "--ui-max-height"
+        },
+        "padding": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "spacing",
+          "cssProperty": "--ui-padding"
+        },
+        "margin": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "spacing",
+          "cssProperty": "--ui-margin"
+        },
+        "aspectRatio": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "sizing",
+          "cssProperty": "--ui-aspect-ratio"
+        },
+        "top": {
+          "defaultValue": "auto",
+          "type": "dimension",
+          "category": "positioning",
+          "cssProperty": "--ui-top"
+        },
+        "right": {
+          "defaultValue": "auto",
+          "type": "dimension",
+          "category": "positioning",
+          "cssProperty": "--ui-right"
+        },
+        "bottom": {
+          "defaultValue": "auto",
+          "type": "dimension",
+          "category": "positioning",
+          "cssProperty": "--ui-bottom"
+        },
+        "left": {
+          "defaultValue": "auto",
+          "type": "dimension",
+          "category": "positioning",
+          "cssProperty": "--ui-left"
+        },
+        "gap": {
+          "defaultValue": "0",
+          "type": "dimension",
+          "category": "layout",
+          "cssProperty": "--ui-gap"
+        },
+        "justifyContent": {
+          "defaultValue": "flex-start",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-justify-content"
+        },
+        "alignItems": {
+          "defaultValue": "stretch",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-align-items"
+        },
+        "alignContent": {
+          "defaultValue": "stretch",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-align-content"
+        },
+        "justifyItems": {
+          "defaultValue": "stretch",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-justify-items"
+        },
+        "placeItems": {
+          "defaultValue": "stretch",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-place-items"
+        },
+        "alignSelf": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-align-self"
+        },
+        "justifySelf": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-justify-self"
+        },
+        "placeSelf": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "layout",
+          "cssProperty": "--ui-place-self"
+        },
+        "gridTemplateColumns": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-template-columns"
+        },
+        "gridTemplateRows": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-template-rows"
+        },
+        "gridTemplateAreas": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-template-areas"
+        },
+        "gridColumn": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-column"
+        },
+        "gridRow": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-row"
+        },
+        "gridArea": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-area"
+        },
+        "gridAutoColumns": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-auto-columns"
+        },
+        "gridAutoRows": {
+          "defaultValue": "auto",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-auto-rows"
+        },
+        "gridAutoFlow": {
+          "defaultValue": "row",
+          "type": "string",
+          "category": "grid",
+          "cssProperty": "--ui-grid-auto-flow"
+        },
+        "flexDirection": {
+          "defaultValue": "row",
+          "type": "string",
+          "category": "flex",
+          "cssProperty": "--ui-flex-direction"
+        },
+        "flexWrap": {
+          "defaultValue": "nowrap",
+          "type": "string",
+          "category": "flex",
+          "cssProperty": "--ui-flex-wrap"
+        },
+        "flexBasis": {
+          "defaultValue": "auto",
+          "type": "dimension",
+          "category": "flex",
+          "cssProperty": "--ui-flex-basis"
+        },
+        "flexGrow": {
+          "defaultValue": "0",
+          "type": "number",
+          "category": "flex",
+          "cssProperty": "--ui-flex-grow"
+        },
+        "flexShrink": {
+          "defaultValue": "1",
+          "type": "number",
+          "category": "flex",
+          "cssProperty": "--ui-flex-shrink"
+        },
+        "order": {
+          "defaultValue": "0",
+          "type": "number",
+          "category": "flex",
+          "cssProperty": "--ui-order"
+        },
+        "animation": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "animation",
+          "cssProperty": "--ui-animation"
+        },
+        "transition": {
+          "defaultValue": "none",
+          "type": "string",
+          "category": "animation",
+          "cssProperty": "--ui-transition"
+        }
+      },
+  
+    "elementScopes": {
+      "zone": {
+        "category": "universal",
+        "name": "Zone",
+        "description": "Universal transformable container",
+        "element": "div"
+      },
+      "text": {
+        "category": "universal", 
+        "name": "Text",
+        "description": "Universal text element",
+        "element": "span"
+      },
+      "link": {
+        "category": "universal",
+        "name": "Link", 
+        "description": "Universal link element",
+        "element": "a"
+      },
+      "media": {
+        "category": "universal",
+        "name": "Media",
+        "description": "Universal media element", 
+        "element": "img"
+      }
+    },
+  
+    "componentScopes": {
+      "zone": {
+        "category": "universal",
+        "name": "Zone Component",
+        "description": "Universal zone that transforms via presets",
+        "baseElement": "zone",
+        "variables": {
+          "--ui-display": "grid",
+          "--ui-grid-template-columns": "1fr",
+          "--ui-grid-template-rows": "1fr",
+          "--ui-grid-template-areas": "\"content\"",
+          "--ui-padding": "1.5rem",
+          "--ui-background-color": "var(--ui-surface)",
+          "--ui-border-width": "3px",
+          "--ui-border-color": "var(--ui-border)",
+          "--ui-border-radius": "8px",
+          "--ui-color": "var(--ui-content)",
+          "--ui-place-items": "center",
+          "--ui-width": "100%",
+          "--ui-height": "100%"
+        }
+      }
+    },
+  
+    "sectionScopes": { 
+      "dashboard": {
+        "category": "Sections",
+        "name": "Dashboard Layout",
+        "description": "Dashboard layout using zone system",
+        "baseElement": "zone",
+        "variables": {
+          "--ui-display": "grid",
+          "--ui-grid-template-columns": "200px 1fr 300px",
+          "--ui-grid-template-rows": "60px 1fr 40px", 
+          "--ui-grid-template-areas": "\"a a a\" \"b c d\" \"e e e\"",
+          "--ui-gap": "1px",
+          "--ui-min-height": "100vh",
+          "--ui-width": "100%",
+          "--ui-background-color": "hsl(0, 0%, 10%)",
+          "--ui-padding": "0"
+        },
+        "zones": {
+          "a": {
+            "component": "zone",
+            "label": "Header Zone",
+            "color": "hsl(333, 55%, 55%)",
+            "position": "a",
+            "background-color": "hsl(0, 0%, 50%)"
+          },
+          "b": {
+            "component": "zone",
+            "label": "Library",
+            "position": "b"
+          },
+          "c": {
+            "component": "zone",
+            "label": "Canvas",
+            "position": "c"
+          },
+          "d": {
+            "component": "zone",
+            "label": "Editor",
+            "position": "d"
+          },
+          "e": {
+            "component": "zone",
+            "label": "Footer",
+            "position": "e"
+          }
+        }
+      }
+    },
+  
+    "presets": {
+      "layouts": {
+        "dashboard": {
+          "name": "Dashboard Layout",
+          "grid": "\"a a a\" \"b c d\" \"e e e\"",
+          "columns": "200px 1fr 300px",
+          "rows": "60px 1fr 40px"
+        },
+        "hero": {
+          "name": "Hero Layout",
+          "grid": "\"content\"",
+          "columns": "1fr",
+          "rows": "1fr"
+        },
+        "split": {
+          "name": "Split Layout",
+          "grid": "\"left right\"",
+          "columns": "1fr 1fr",
+          "rows": "1fr"
+        },
+        "bento": {
+          "name": "Bento Layout",
+          "grid": "\"a a b\" \"c d d\"",
+          "columns": "1fr 1fr 1fr",
+          "rows": "1fr 1fr"
+        }
+      },
+      "colors": {
+        "dark": {
+          "name": "Dark Theme",
+          "hueShift": 0,
+          "saturationMultiplier": 1,
+          "lightnessMultiplier": 1
+        },
+        "light": {
+          "name": "Light Theme",
+          "hueShift": 0,
+          "saturationMultiplier": 0.8,
+          "lightnessMultiplier": 1.5
+        },
+        "accent": {
+          "name": "Accent Theme",
+          "hueShift": 180,
+          "saturationMultiplier": 1.2,
+          "lightnessMultiplier": 0.9
+        }
+      },
+      "zoneStyles": {
+        "header": {
+          "--ui-background-color": "hsl(331, 35%, 15%)",
+          "--ui-min-height": "60px"
+        },
+        "sidebar": {
+          "--ui-background-color": "hsl(0, 0%, 10%)",
+          "--ui-border-right-width": "1px"
+        },
+        "main": {
+          "--ui-background-color": "hsl(0, 0%, 8%)",
+          "--ui-padding": "2rem"
+        },
+        "footer": {
+          "--ui-background-color": "hsl(0, 0%, 12%)",
+          "--ui-min-height": "40px",
+          "--ui-font-size": "0.875rem"
+        }
+      }
+    },
+  
+    "universalPositionHelpers": {
+      "a": {
+        "name": "Grid Area A",
+        "description": "Universal position helper for grid area 'a'",
+        "variables": { 
+          "--ui-grid-area": "a",
+          "--ui-background-color": "var(--ui-surface)",
+          "--ui-opacity": "0.8",
+          "--ui-place-items": "center"
+        }
+      },
+      "b": {
+        "name": "Grid Area B", 
+        "description": "Universal position helper for grid area 'b'",
+        "variables": { 
+          "--ui-grid-area": "b",
+          "--ui-background-color": "var(--ui-accent)",
+          "--ui-opacity": "0.3"
+        }
+      },
+      "c": {
+        "name": "Grid Area C",
+        "description": "Universal position helper for grid area 'c'",
+        "variables": { 
+          "--ui-grid-area": "c",
+          "--ui-background-color": "var(--ui-background-overlay)",
+          "--ui-opacity": "0.8"
+        }
+      },
+      "d": {
+        "name": "Grid Area D",
+        "description": "Universal position helper for grid area 'd'",
+        "variables": { 
+          "--ui-grid-area": "d",
+          "--ui-background-color": "var(--ui-accent)",
+          "--ui-opacity": "0.5"
+        }
+      },
+      "e": {
+        "name": "Grid Area E",
+        "description": "Universal position helper for grid area 'e'",
+        "variables": { 
+          "--ui-grid-area": "e",
+          "--ui-background-color": "var(--ui-border)",
+          "--ui-opacity": "0.4",
+          "--ui-place-items": "center"
+        }
+      },
+      "f": {
+        "name": "Grid Area F",
+        "description": "Universal position helper for grid area 'f'",
+        "variables": { "--ui-grid-area": "f" }
+      },
+      "g": {
+        "name": "Grid Area G",
+        "description": "Universal position helper for grid area 'g'",
+        "variables": { "--ui-grid-area": "g" }
+      },
+      "h": {
+        "name": "Grid Area H",
+        "description": "Universal position helper for grid area 'h'",
+        "variables": { "--ui-grid-area": "h" }
+      }
+    }
+  }
+   

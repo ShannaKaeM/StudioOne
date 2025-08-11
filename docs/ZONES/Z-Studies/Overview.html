@@ -1,0 +1,473 @@
+Zone Overview 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONE System - Complete Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ===================================
+           THE ONE SYSTEM - COMPLETE
+           =================================== */
+        
+        /* 1. Self-Defining Variables (All 103) */
+        .zone {
+            /* Each zone has ALL variables available */
+            /* Grid */
+            display: var(--display, block);
+            grid-template-areas: var(--grid-areas);
+            grid-template-columns: var(--grid-cols);
+            grid-template-rows: var(--grid-rows);
+            grid-area: var(--grid-area);
+            gap: var(--gap);
+            
+            /* Position */
+            position: var(--position, relative);
+            z-index: var(--z-index, auto);
+            top: var(--top);
+            right: var(--right);
+            bottom: var(--bottom);
+            left: var(--left);
+            
+            /* Size */
+            width: var(--width, auto);
+            height: var(--height, auto);
+            min-width: var(--min-width);
+            max-width: var(--max-width);
+            min-height: var(--min-height);
+            max-height: var(--max-height);
+            padding: var(--padding, 0);
+            margin: var(--margin, 0);
+            
+            /* Colors (9 total) */
+            color: var(--color, inherit);
+            background: var(--background, transparent);
+            border-color: var(--border-color);
+            outline-color: var(--outline-color);
+            caret-color: var(--caret-color);
+            accent-color: var(--accent-color);
+            fill: var(--fill);
+            stroke: var(--stroke);
+            
+            /* Typography */
+            font-family: var(--font-family, inherit);
+            font-size: var(--font-size, 1rem);
+            font-weight: var(--font-weight, 400);
+            font-style: var(--font-style);
+            line-height: var(--line-height, 1.5);
+            letter-spacing: var(--letter-spacing);
+            text-align: var(--text-align);
+            text-transform: var(--text-transform);
+            text-decoration: var(--text-decoration);
+            white-space: var(--white-space);
+            
+            /* Effects */
+            opacity: var(--opacity, 1);
+            filter: var(--filter);
+            backdrop-filter: var(--backdrop-filter);
+            box-shadow: var(--box-shadow);
+            transform: var(--transform);
+            transition: var(--transition);
+            animation: var(--animation);
+            
+            /* Borders */
+            border: var(--border);
+            border-radius: var(--border-radius);
+            outline: var(--outline);
+            
+            /* Overflow */
+            overflow: var(--overflow);
+            
+            /* Flexbox */
+            align-items: var(--align-items);
+            justify-content: var(--justify-content);
+            align-content: var(--align-content);
+            
+            box-sizing: border-box;
+        }
+        
+        /* 2. Position Helpers (Mathematical Grid Areas) */
+        .a { --grid-area: a; }
+        .b { --grid-area: b; }
+        .c { --grid-area: c; }
+        .d { --grid-area: d; }
+        .e { --grid-area: e; }
+        .f { --grid-area: f; }
+        
+        /* 3. Layer Helpers (Z-index) */
+        .back { --z-index: 0; }
+        .mid { --z-index: 1; }
+        .front { --z-index: 2; }
+        
+        /* 4. Presets (Transform Everything) */
+        .split {
+            --display: grid;
+            --grid-areas: "a b";
+            --grid-cols: 1fr 1fr;
+            --height: 400px;
+            --background: white;
+            --border-radius: 1rem;
+            --box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            --overflow: hidden;
+        }
+        
+        .split .a {
+            --padding: 3rem;
+            --display: grid;
+            --align-content: center;
+            --background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .split .b {
+            --background: #f0f0f0;
+            --display: grid;
+            --align-content: center;
+            --justify-content: center;
+        }
+        
+        .split .c {
+            --font-size: 2.5rem;
+            --font-weight: 700;
+            --color: white;
+            --margin: 0 0 1rem 0;
+        }
+        
+        .split .d {
+            --font-size: 1.125rem;
+            --color: rgba(255,255,255,0.9);
+            --line-height: 1.6;
+        }
+        
+        /* Documentation Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .concept {
+            background: #f8f8ff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #667eea;
+        }
+        
+        .concept h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        pre {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            margin: 1rem 0;
+        }
+        
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            color: white;
+            margin: 2rem 0;
+        }
+        
+        .flow-step {
+            text-align: center;
+        }
+        
+        .flow-step .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .arrow {
+            font-size: 2rem;
+        }
+        
+        .highlight {
+            background: #ffd93d;
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.125rem;
+            color: #333;
+        }
+        
+        .formula {
+            background: #667eea;
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>🎯 The ONE System</h1>
+            <p>Everything is a Zone • 103 Self-Defining Variables • Infinite Possibilities</p>
+        </div>
+        
+        <!-- Live Example -->
+        <div class="zone split">
+            <div class="zone a" data-label="Content">
+                <div class="zone c" data-label="Title">ONE System</div>
+                <div class="zone d" data-label="Description">
+                    Just zones with self-defining variables.
+                    Change the preset, transform everything.
+                </div>
+            </div>
+            <div class="zone b" data-label="Visual">
+                <div style="font-size: 4rem;">🎨</div>
+            </div>
+        </div>
+        
+        <!-- Core Concepts -->
+        <div class="section">
+            <h2>🏗️ The 5 Core Concepts</h2>
+            
+            <div class="concept-grid">
+                <div class="concept">
+                    <h3>1. Everything is a Zone</h3>
+                    <p>No semantic HTML constraints. Just <code>.zone</code> - that's it!</p>
+                </div>
+                
+                <div class="concept">
+                    <h3>2. Self-Defining Variables</h3>
+                    <p>103 CSS variables available to EVERY zone. Direct mapping, no inheritance needed.</p>
+                </div>
+                
+                <div class="concept">
+                    <h3>3. Mathematical Positions</h3>
+                    <p>Grid areas (a, b, c...) and z-index layers. Pure math, not semantics.</p>
+                </div>
+                
+                <div class="concept">
+                    <h3>4. Preset Transformation</h3>
+                    <p>Presets set variables. Zone + Preset = Anything!</p>
+                </div>
+                
+                <div class="concept">
+                    <h3>5. User Labels + AI</h3>
+                    <p>Labels for humans, AI transforms to semantic HTML for production.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- The Complete System -->
+        <div class="section">
+            <h2>📦 The Complete System (Under 100 Lines)</h2>
+            <pre>
+/* 1. BASE CLASS - Self-Defining Variables */
+.zone {
+    display: var(--display, block);
+    width: var(--width, auto);
+    color: var(--color, inherit);
+    /* ... 100 more variables ... */
+}
+
+/* 2. POSITIONS - Mathematical Grid Areas */
+.a { --grid-area: a; }
+.b { --grid-area: b; }
+
+/* 3. LAYERS - Z-index Stacking */
+.back { --z-index: 0; }
+.front { --z-index: 2; }
+
+/* 4. PRESETS - Transform Everything */
+.split {
+    --display: grid;
+    --grid-areas: "a b";
+}
+
+/* 5. HTML - Pure Zones */
+&lt;div class="zone split"&gt;
+    &lt;div class="zone a" data-label="Navigation"&gt;&lt;/div&gt;
+    &lt;div class="zone b" data-label="Content"&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </pre>
+        </div>
+        
+        <!-- Self-Defining Variables -->
+        <div class="section">
+            <h2>🔮 Self-Defining Variables (The Magic)</h2>
+            <p>Every zone has access to ALL 103 variables. They define themselves through CSS custom properties:</p>
+            
+            <pre>
+/* Zone doesn't inherit - it TRANSFORMS */
+.zone {
+    /* 9 Color Variables */
+    color: var(--color);
+    background: var(--background);
+    border-color: var(--border-color);
+    
+    /* Size Variables */
+    width: var(--width);
+    padding: var(--padding);
+    
+    /* Typography Variables */
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    
+    /* ... 90+ more ... */
+}
+
+/* Preset SETS the variables */
+.hero {
+    --font-size: 4rem;    /* Zone becomes large */
+    --color: white;       /* Zone becomes white text */
+    --background: purple; /* Zone becomes purple */
+}
+
+.card {
+    --font-size: 1rem;    /* Same zone, now small */
+    --padding: 1rem;      /* Same zone, now padded */
+    --border-radius: 8px; /* Same zone, now rounded */
+}
+            </pre>
+            
+            <p style="margin-top: 1rem;"><strong>Key insight:</strong> Variables aren't inherited from parents - they're SET by presets. This is why any zone can become anything!</p>
+        </div>
+        
+        <!-- The Flow -->
+        <div class="flow">
+            <div class="flow-step">
+                <div class="icon">👤</div>
+                <div>User Designs</div>
+                <small>Drag zones freely</small>
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-step">
+                <div class="icon">🏷️</div>
+                <div>User Labels</div>
+                <small>Natural names</small>
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-step">
+                <div class="icon">🎨</div>
+                <div>Apply Preset</div>
+                <small>Transform zones</small>
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-step">
+                <div class="icon">🤖</div>
+                <div>AI Export</div>
+                <small>Semantic HTML</small>
+            </div>
+        </div>
+        
+        <!-- The Formula -->
+        <div class="formula">
+            <strong>Zones</strong> + <strong>Self-Defining Variables</strong> + <strong>Presets</strong> + <strong>AI</strong> = <strong>∞</strong>
+        </div>
+        
+        <!-- Why It Works -->
+        <div class="section">
+            <h2>✨ Why This Changes Everything</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <h3 style="color: #f5576c;">❌ Traditional CSS</h3>
+                    <ul style="line-height: 2;">
+                        <li>Semantic HTML prison</li>
+                        <li>Inheritance cascades</li>
+                        <li>Naming complexity</li>
+                        <li>Component coupling</li>
+                        <li>Fixed purposes</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #667eea;">✓ ONE System</h3>
+                    <ul style="line-height: 2;">
+                        <li>Mathematical freedom</li>
+                        <li>Self-defining variables</li>
+                        <li>Just "zone"</li>
+                        <li>Complete decoupling</li>
+                        <li>Infinite transformation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- The Code -->
+        <div class="section" style="background: #f8f8ff;">
+            <h2>🚀 Start Building</h2>
+            <pre style="background: white;">
+&lt;!-- That's it. This is all you need. --&gt;
+&lt;div class="zone [preset] [position] [layer]" data-label="[human name]"&gt;
+    &lt;div class="zone [position]" data-label="[human name]"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Example: Hero with title --&gt;
+&lt;div class="zone hero a" data-label="Hero Section"&gt;
+    &lt;div class="zone c" data-label="Headline"&gt;Welcome&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- AI transforms to: --&gt;
+&lt;section class="hero" role="banner"&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+&lt;/section&gt;
+            </pre>
+        </div>
+    </div>
+</body>
+</html>
