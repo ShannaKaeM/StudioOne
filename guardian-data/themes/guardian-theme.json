@@ -1,65 +1,29 @@
 {
-  "version": "3.0.0",
-  "name": "Guardian Element Architecture",
-  "description": "new",
-
-"brandColors": {
+  "version": "4.0.0",
+  "name": "Studio ONE Zone System",
+  "description": "Zone-based architecture with data-scope and data-preset system",
+  
+  "brandColors": {
     "color1": {
-      "defaultValue": "hsl(83, 36%, 38%)",
-      "name": "Primary",
-      "description": "Main brand color"
+      "h": 331,
+      "s": 100,
+      "l": 50,
+      "name": "Bright Pink"
     },
     "color2": {
-      "defaultValue": "hsl(179, 54%, 39%)",
-      "name": "Secondary", 
-      "description": "Secondary brand color"
+      "h": 120,
+      "s": 100,
+      "l": 50,
+      "name": "Bright Green"
     },
     "color3": {
-      "defaultValue": "hsl(0, 0%, 50%)",
-      "name": "Neutral",
-      "description": "Neutral color"
+      "h": 240,
+      "s": 100,
+      "l": 50,
+      "name": "Bright Blue"
     }
   },
 
-  "lookPresets": {
-    "look-1": {
-      "name": "Primary Focus",
-      "backgroundColor": "hsl(0, 0%, 85%)",
-      "color": "hsl(0, 0%, 20%)",
-      "borderColor": "hsl(0, 0%, 80%)",
-      "accentColor": "hsl(179, 54%, 39%)",
-      "outlineColor": "hsl(179, 54%, 39%)",
-      "fill": "hsl(179, 54%, 39%)",
-      "stroke": "hsl(0, 0%, 50%)",
-      "caretColor": "hsl(179, 54%, 39%)",
-      "background": "hsla(0, 0%, 0%, 0.5)"
-    },
-    "look-2": {
-      "name": "Secondary Focus",
-      "backgroundColor": "hsl(179, 54%, 39%)",
-      "color": "hsl(0, 0%, 20%)",
-      "borderColor": "hsl(83, 36%, 38%)",
-      "accentColor": "hsl(83, 36%, 38%)",
-      "focusColor": "hsl(0, 0%, 20%)",
-      "fill": "hsl(0, 0%, 50%)",
-      "stroke": "hsl(83, 36%, 38%)",
-      "caretColor": "hsl(0, 0%, 50%)",
-      "background": "hsla(0, 0%, 0%, 0.5)"
-    },
-    "look-3": {
-      "name": "Neutral Focus",
-      "backgroundColor": "hsl(0, 0%, 50%)",
-      "color": "hsl(83, 36%, 38%)",
-      "borderColor": "hsl(179, 54%, 39%)",
-      "accentColor": "hsl(83, 36%, 38%)",
-      "focusColor": "hsl(83, 36%, 38%)",
-      "fill": "hsl(83, 36%, 38%)",
-      "stroke": "hsl(179, 54%, 39%)",
-      "caretColor": "hsl(83, 36%, 38%)",
-      "background": "hsla(0, 0%, 0%, 0.5)"
-    }
-  },
-  
   "variables": {
     "color": {
       "defaultValue": "hsl(0, 0%, 20%)",
@@ -69,14 +33,14 @@
       "cssProperty": "--color"
     },
     "backgroundColor": {
-      "defaultValue": "hsl(0, 0%, 90%)",
+      "defaultValue": "hsl(151, 70%, 55%)",
       "type": "color",
       "category": "colors",
       "description": "Background color",
       "cssProperty": "--background-color"
     },
     "borderColor": {
-      "defaultValue": "hsl(0, 0%, 80%)",
+      "defaultValue": "hsl(257, 83%, 37%)",
       "type": "color",
       "category": "colors",
       "description": "Border color",
@@ -118,10 +82,10 @@
       "cssProperty": "--caret-color"
     },
     "background": {
-      "defaultValue": "hsla(0, 0%, 0%, 0.5)",
+      "defaultValue": "transparent",
       "type": "color",
       "category": "colors",
-      "description": "Background overlay color",
+      "description": "Background overlay",
       "cssProperty": "--background"
     },
     "backgroundImage": {
@@ -129,6 +93,48 @@
       "type": "string",
       "category": "visual",
       "cssProperty": "--background-image"
+    },
+    "maskImage": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--mask-image"
+    },
+    "backdropFilter": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--backdrop-filter"
+    },
+    "filter": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--filter"
+    },
+    "maskMode": {
+      "defaultValue": "alpha",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--mask-mode"
+    },
+    "maskRepeat": {
+      "defaultValue": "no-repeat",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--mask-repeat"
+    },
+    "maskPosition": {
+      "defaultValue": "center",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--mask-position"
+    },
+    "maskSize": {
+      "defaultValue": "contain",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--mask-size"
     },
     "backgroundSize": {
       "defaultValue": "cover",
@@ -148,17 +154,17 @@
       "category": "visual",
       "cssProperty": "--background-repeat"
     },
-    "backdropFilter": {
-      "defaultValue": "none",
-      "type": "string",
-      "category": "visual",
-      "cssProperty": "--backdrop-filter"
-    },
     "boxShadow": {
       "defaultValue": "none",
       "type": "string",
       "category": "visual",
       "cssProperty": "--box-shadow"
+    },
+    "textShadow": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--text-shadow"
     },
     "opacity": {
       "defaultValue": "1",
@@ -166,47 +172,107 @@
       "category": "visual",
       "cssProperty": "--opacity"
     },
+    "transform": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--transform"
+    },
+    "transformOrigin": {
+      "defaultValue": "center",
+      "type": "string",
+      "category": "visual",
+      "cssProperty": "--transform-origin"
+    },
     "borderRadius": {
       "defaultValue": "0",
       "type": "dimension",
-      "category": "border",
+      "category": "borders",
       "cssProperty": "--border-radius"
     },
     "borderWidth": {
       "defaultValue": "0",
       "type": "dimension",
-      "category": "border",
+      "category": "borders",
       "cssProperty": "--border-width"
     },
     "borderStyle": {
       "defaultValue": "solid",
       "type": "string",
-      "category": "border",
+      "category": "borders",
       "cssProperty": "--border-style"
     },
     "borderTopWidth": {
       "defaultValue": "0",
       "type": "dimension",
-      "category": "border",
+      "category": "borders",
       "cssProperty": "--border-top-width"
     },
     "borderRightWidth": {
       "defaultValue": "0",
       "type": "dimension",
-      "category": "border",
+      "category": "borders",
       "cssProperty": "--border-right-width"
     },
     "borderBottomWidth": {
       "defaultValue": "0",
       "type": "dimension",
-      "category": "border",
+      "category": "borders",
       "cssProperty": "--border-bottom-width"
     },
     "borderLeftWidth": {
       "defaultValue": "0",
       "type": "dimension",
-      "category": "border",
+      "category": "borders",
       "cssProperty": "--border-left-width"
+    },
+    "borderTopStyle": {
+      "defaultValue": "solid",
+      "type": "string",
+      "category": "borders",
+      "cssProperty": "--border-top-style"
+    },
+    "borderRightStyle": {
+      "defaultValue": "solid",
+      "type": "string",
+      "category": "borders",
+      "cssProperty": "--border-right-style"
+    },
+    "borderBottomStyle": {
+      "defaultValue": "solid",
+      "type": "string",
+      "category": "borders",
+      "cssProperty": "--border-bottom-style"
+    },
+    "borderLeftStyle": {
+      "defaultValue": "solid",
+      "type": "string",
+      "category": "borders",
+      "cssProperty": "--border-left-style"
+    },
+    "outlineWidth": {
+      "defaultValue": "0px",
+      "type": "dimension",
+      "category": "borders",
+      "cssProperty": "--outline-width"
+    },
+    "outlineStyle": {
+      "defaultValue": "solid",
+      "type": "string",
+      "category": "borders",
+      "cssProperty": "--outline-style"
+    },
+    "outlineOffset": {
+      "defaultValue": "0",
+      "type": "dimension",
+      "category": "borders",
+      "cssProperty": "--outline-offset"
+    },
+    "strokeWidth": {
+      "defaultValue": "0",
+      "type": "number",
+      "category": "borders",
+      "cssProperty": "--stroke-width"
     },
     "display": {
       "defaultValue": "block",
@@ -220,18 +286,53 @@
       "category": "behavior",
       "cssProperty": "--position"
     },
-    "cursor": {
-      "defaultValue": "default",
+    "overflow": {
+      "defaultValue": "visible",
       "type": "string",
       "category": "behavior",
-      "cssProperty": "--cursor-type",
-      "mapsTo": "cursor"
+      "cssProperty": "--overflow"
+    },
+    "overflowX": {
+      "defaultValue": "visible",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--overflow-x"
+    },
+    "overflowY": {
+      "defaultValue": "visible",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--overflow-y"
+    },
+    "visibility": {
+      "defaultValue": "visible",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--visibility"
+    },
+    "pointerEvents": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--pointer-events"
     },
     "userSelect": {
       "defaultValue": "auto",
       "type": "string",
       "category": "behavior",
       "cssProperty": "--user-select"
+    },
+    "cursor": {
+      "defaultValue": "default",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--cursor"
+    },
+    "zIndex": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "behavior",
+      "cssProperty": "--z-index"
     },
     "fontFamily": {
       "defaultValue": "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -251,6 +352,12 @@
       "category": "typography",
       "cssProperty": "--font-weight"
     },
+    "fontStyle": {
+      "defaultValue": "normal",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--font-style"
+    },
     "lineHeight": {
       "defaultValue": "1.5",
       "type": "number",
@@ -269,11 +376,47 @@
       "category": "typography",
       "cssProperty": "--text-align"
     },
+    "textDecoration": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--text-decoration"
+    },
     "textTransform": {
       "defaultValue": "none",
       "type": "string",
       "category": "typography",
       "cssProperty": "--text-transform"
+    },
+    "textOverflow": {
+      "defaultValue": "clip",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--text-overflow"
+    },
+    "whiteSpace": {
+      "defaultValue": "normal",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--white-space"
+    },
+    "wordBreak": {
+      "defaultValue": "normal",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--word-break"
+    },
+    "wordWrap": {
+      "defaultValue": "normal",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--word-wrap"
+    },
+    "verticalAlign": {
+      "defaultValue": "baseline",
+      "type": "string",
+      "category": "typography",
+      "cssProperty": "--vertical-align"
     },
     "width": {
       "defaultValue": "auto",
@@ -311,6 +454,12 @@
       "category": "sizing",
       "cssProperty": "--max-height"
     },
+    "aspectRatio": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "sizing",
+      "cssProperty": "--aspect-ratio"
+    },
     "padding": {
       "defaultValue": "0",
       "type": "dimension",
@@ -322,6 +471,30 @@
       "type": "dimension",
       "category": "spacing",
       "cssProperty": "--margin"
+    },
+    "top": {
+      "defaultValue": "auto",
+      "type": "dimension",
+      "category": "positioning",
+      "cssProperty": "--top"
+    },
+    "right": {
+      "defaultValue": "auto",
+      "type": "dimension",
+      "category": "positioning",
+      "cssProperty": "--right"
+    },
+    "bottom": {
+      "defaultValue": "auto",
+      "type": "dimension",
+      "category": "positioning",
+      "cssProperty": "--bottom"
+    },
+    "left": {
+      "defaultValue": "auto",
+      "type": "dimension",
+      "category": "positioning",
+      "cssProperty": "--left"
     },
     "gap": {
       "defaultValue": "0",
@@ -341,11 +514,41 @@
       "category": "layout",
       "cssProperty": "--align-items"
     },
+    "alignContent": {
+      "defaultValue": "stretch",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--align-content"
+    },
+    "justifyItems": {
+      "defaultValue": "stretch",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--justify-items"
+    },
     "placeItems": {
       "defaultValue": "stretch",
       "type": "string",
       "category": "layout",
       "cssProperty": "--place-items"
+    },
+    "alignSelf": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--align-self"
+    },
+    "justifySelf": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--justify-self"
+    },
+    "placeSelf": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "layout",
+      "cssProperty": "--place-self"
     },
     "gridTemplateColumns": {
       "defaultValue": "none",
@@ -365,11 +568,41 @@
       "category": "grid",
       "cssProperty": "--grid-template-areas"
     },
+    "gridColumn": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-column"
+    },
+    "gridRow": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-row"
+    },
     "gridArea": {
       "defaultValue": "auto",
       "type": "string",
       "category": "grid",
       "cssProperty": "--grid-area"
+    },
+    "gridAutoColumns": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-auto-columns"
+    },
+    "gridAutoRows": {
+      "defaultValue": "auto",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-auto-rows"
+    },
+    "gridAutoFlow": {
+      "defaultValue": "row",
+      "type": "string",
+      "category": "grid",
+      "cssProperty": "--grid-auto-flow"
     },
     "flexDirection": {
       "defaultValue": "row",
@@ -377,43 +610,166 @@
       "category": "flex",
       "cssProperty": "--flex-direction"
     },
+    "flexWrap": {
+      "defaultValue": "nowrap",
+      "type": "string",
+      "category": "flex",
+      "cssProperty": "--flex-wrap"
+    },
+    "flexBasis": {
+      "defaultValue": "auto",
+      "type": "dimension",
+      "category": "flex",
+      "cssProperty": "--flex-basis"
+    },
+    "flexGrow": {
+      "defaultValue": "0",
+      "type": "number",
+      "category": "flex",
+      "cssProperty": "--flex-grow"
+    },
+    "flexShrink": {
+      "defaultValue": "1",
+      "type": "number",
+      "category": "flex",
+      "cssProperty": "--flex-shrink"
+    },
+    "order": {
+      "defaultValue": "0",
+      "type": "number",
+      "category": "flex",
+      "cssProperty": "--order"
+    },
+    "animation": {
+      "defaultValue": "none",
+      "type": "string",
+      "category": "animation",
+      "cssProperty": "--animation"
+    },
     "transition": {
-      "defaultValue": "all 0.2s ease",
+      "defaultValue": "none",
       "type": "string",
       "category": "animation",
       "cssProperty": "--transition"
-    },
-    "transform": {
-      "defaultValue": "none",
-      "type": "string",
-      "category": "visual",
-      "cssProperty": "--transform"
-    },
-    "objectFit": {
-      "defaultValue": "cover",
-      "type": "string",
-      "category": "visual",
-      "cssProperty": "--object-fit"
     }
   },
 
-"elementScopes": {
-  "baseElement": {
-      "category": "base",
-      "name": "Base Element",
-      "description": "Single element",
+  "positionHelpers": {
+    "a": {
+      "name": "Grid Area A",
       "variables": {
-        "display": "grid",
-        "gridTemplateColumns": "1f",
-        "gridTemplateRows": "1fr",
+        "gridArea": "a"
+      }
+    },
+    "b": {
+      "name": "Grid Area B",
+      "variables": {
+        "gridArea": "b"
+      }
+    },
+    "c": {
+      "name": "Grid Area C",
+      "variables": {
+        "gridArea": "c"
+      }
+    },
+    "d": {
+      "name": "Grid Area D",
+      "variables": {
+        "gridArea": "d"
+      }
+    },
+    "e": {
+      "name": "Grid Area E",
+      "variables": {
+        "gridArea": "e"
+      }
+    },
+    "f": {
+      "name": "Grid Area F",
+      "variables": {
+        "gridArea": "f"
+      }
+    },
+    "g": {
+      "name": "Grid Area G",
+      "variables": {
+        "gridArea": "g"
+      }
+    },
+    "h": {
+      "name": "Grid Area H",
+      "variables": {
+        "gridArea": "h"
+      }
+    },
+    "i": {
+      "name": "Grid Area I",
+      "variables": {
+        "gridArea": "i"
+      }
+    }
+  },
+
+  "dataScopes": {
+    "section": {
+      "name": "Section",
+      "category": "structure",
+      "description": "Main section container",
+      "variables": {
+        "display": "block",
+        "minHeight": "100%",
+        "minWidth": "100%",
+        "height": "100%",
         "width": "100%",
-        "height": "100%"
+        "backgroundColor": "hsl(306, 62%, 72%)"
+      }
+    },
+    "wrapper": {
+      "name": "Wrapper",
+      "category": "structure",
+      "description": "Generic wrapper element",
+      "variables": {
+        "display": "block",
+        "height": "100%",
+        "width": "100%",
+        "backgroundColor": "hsl(0, 0%, 50%)"
+      }
+    },
+    "text-logo": {
+      "name": "Text Logo",
+      "category": "typography",
+      "description": "Logo text element",
+      "variables": {
+        "fontSize": "calc(min(1rem, max(3rem)))",
+        "fontWeight": "700",
+        "color": "hsl(347, 37%, 50%)"
+      }
+    },
+    "link": {
+      "name": "Link",
+      "category": "interactive",
+      "description": "Interactive link element",
+      "variables": {
+        "color": "hsl(0, 0%, 70%)",
+        "textDecoration": "none",
+        "padding": "0.5rem 1rem",
+        "cursor": "pointer",
+        "transition": "all 0.2s ease",
+        "fontSize": "1rem",
+        "fontWeight": "300"
+      },
+      "states": {
+        "hover": {
+          "color": "hsl(220, 70%, 50%)",
+          "fontWeight": "500"
+        }
       }
     },
     "button": {
-      "category": "interactive",
       "name": "Button",
-      "description": "Interactive element",
+      "category": "interactive",
+      "description": "Interactive button element",
       "variables": {
         "display": "inline-flex",
         "alignItems": "center",
@@ -421,442 +777,338 @@
         "padding": "0.5rem 1rem",
         "fontSize": "0.875rem",
         "fontWeight": "500",
-        "lineHeight": "1.2",
         "borderRadius": "0.375rem",
-        "border": "1px solid var(--one-border)",
-        "backgroundColor": "var(--one-surface)",
-        "color": "var(--one-content)",
+        "backgroundColor": "hsl(220, 70%, 50%)",
+        "color": "white",
         "cursor": "pointer",
-        "userSelect": "none",
-        "height": "2.5rem"
+        "transition": "all 0.2s ease"
+      },
+      "states": {
+        "hover": {
+          "backgroundColor": "hsl(220, 70%, 40%)"
+        }
       }
     },
-    "link": {
-      "category": "interactive",
-      "name": "Link",
-      "description": "Interactive element",
+    "title": {
+      "name": "Title",
+      "category": "typography",
+      "description": "Title text element",
       "variables": {
-        "display": "inline",
-        "color": "var(--one-accent-color)",
-        "textDecoration": "underline",
-        "textUnderlineOffset": "3px",
-        "textDecorationColor": "hsla(220, 70%, 50%, 0.4)",
-        "cursor": "pointer",
-        "transition": "all 0.2s ease",
-        "fontWeight": "inherit"
+        "fontSize": "1.5rem",
+        "fontWeight": "600",
+        "margin": "0 0 1rem 0"
       }
     },
-    "badge": {
-      "category": "interactive",
-      "name": "Badge",
-      "description": "Interactive element",
+    "text": {
+      "name": "Text",
+      "category": "typography",
+      "description": "Regular text element",
       "variables": {
-        "display": "inline-flex",
-        "alignItems": "center",
-        "justifyContent": "center",
-        "padding": "0.125rem 0.375rem",
-        "fontSize": "0.75rem",
-        "fontWeight": "500",
-        "lineHeight": "1.2",
-        "borderRadius": "0.25rem",
-        "backgroundColor": "hsl(210, 20%, 85%)",
-        "color": "var(--one-content)",
-        "textTransform": "uppercase",
-        "letterSpacing": "0.025em",
-        "userSelect": "none",
-        "whiteSpace": "nowrap",
-        "minHeight": "1.25rem"
-      }
-    },
-    "tag": {
-      "category": "interactive",
-      "name": "Tag",
-      "description": "Interactive element",
-      "variables": {
-        "display": "inline-flex",
-        "alignItems": "center",
-        "gap": "0.375rem",
-        "padding": "0.25rem 0.5rem",
-        "fontSize": "0.875rem",
-        "fontWeight": "500",
-        "lineHeight": "1.2",
-        "borderRadius": "0.375rem",
-        "backgroundColor": "hsl(210, 15%, 90%)",
-        "color": "var(--one-content)",
-        "border": "1px solid hsl(210, 15%, 80%)",
-        "cursor": "default",
-        "transition": "all 0.2s ease",
-        "userSelect": "none",
-        "maxWidth": "12rem"
-      }
-    },
-    "tooltip": {
-      "category": "interactive",
-      "name": "Tooltip",
-      "description": "Interactive element",
-      "variables": {
-        "position": "relative",
-        "display": "inline-block",
-        "cursor": "help"
-      }
-    },
-    
-    "spacer": {
-      "category": "layout",
-      "name": "Spacer",
-      "description": "Layout element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "height": "1rem",
-        "margin": "0",
-        "padding": "0",
-        "backgroundColor": "transparent"
-      }
-    },
-    "divider": {
-      "category": "layout",
-      "name": "Divider",
-      "description": "Layout element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "height": "1px",
-        "margin": "1rem 0",
-        "padding": "0",
-        "backgroundColor": "hsl(0, 0%, 85%)",
-        "border": "none"
+        "color": "hsl(0, 0%, 60%)",
+        "fontSize": "0.875rem"
       }
     },
     "input": {
-      "category": "form",
       "name": "Input",
-      "description": "Form element",
-      "styles": {
-        "display": "block",
+      "category": "form",
+      "description": "Form input element",
+      "variables": {
         "width": "100%",
-        "padding": "0.5rem 0.75rem",
-        "fontSize": "1rem",
-        "lineHeight": "1.5",
-        "border": "1px solid var(--one-border)",
+        "padding": "0.75rem",
+        "backgroundColor": "hsl(0, 0%, 5%)",
+        "borderWidth": "1px",
+        "borderColor": "hsl(0, 0%, 20%)",
         "borderRadius": "0.375rem",
-        "backgroundColor": "var(--one-surface)",
-        "color": "var(--one-content)",
-        "outline": "none",
-        "transition": "border-color 0.2s ease",
-        "boxSizing": "border-box"
+        "color": "white"
+      }
+    }
+  },
+
+  "dataPresets": {
+    "layout-dashboard": {
+      "name": "Dashboard Layout",
+      "category": "layouts",
+      "description": "Main dashboard grid layout",
+      "variables": {
+        "display": "grid",
+        "gridTemplateAreas": "\"a a a\" \"b c d\" \"e e e\"",
+        "gridTemplateColumns": "1fr 3fr 1fr",
+        "gridTemplateRows": "min-content 1fr min-content",
+        "gap": "0"
       }
     },
-    "textarea": {
-      "category": "form",
-      "name": "Textarea",
-      "description": "Form element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "minHeight": "4rem",
-        "padding": "0.5rem 0.75rem",
-        "fontSize": "1rem",
-        "lineHeight": "1.5",
-        "border": "1px solid var(--one-border)",
-        "borderRadius": "0.375rem",
-        "backgroundColor": "var(--one-surface)",
-        "color": "var(--one-content)",
-        "outline": "none",
-        "resize": "vertical",
-        "transition": "border-color 0.2s ease",
-        "boxSizing": "border-box"
+    "layout-1-column": {
+      "name": "1 Column Layout",
+      "category": "layouts",
+      "description": "Single column layout",
+      "variables": {
+        "display": "grid",
+        "gridTemplateAreas": "\"a\"",
+        "gridTemplateColumns": "1fr",
+        "alignItems": "center"
       }
     },
-    "select": {
-      "category": "form",
-      "name": "Select",
-      "description": "Form element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "padding": "0.5rem 0.75rem",
-        "fontSize": "1rem",
-        "lineHeight": "1.5",
-        "border": "1px solid var(--one-border)",
-        "borderRadius": "0.375rem",
-        "backgroundColor": "var(--one-surface)",
-        "color": "var(--one-content)",
-        "outline": "none",
-        "cursor": "pointer",
-        "transition": "border-color 0.2s ease",
-        "boxSizing": "border-box"
+    "layout-2-column": {
+      "name": "2 Column Layout",
+      "category": "layouts",
+      "description": "Two column layout",
+      "variables": {
+        "display": "grid",
+        "gridTemplateAreas": "\"a b\"",
+        "gridTemplateColumns": "1fr 1fr",
+        "alignItems": "stretch"
       }
     },
-    "checkbox": {
-      "category": "form",
-      "name": "Checkbox",
-      "description": "Form element",
-      "styles": {
-        "display": "inline-block",
-        "width": "1rem",
-        "height": "1rem",
-        "margin": "0 0.5rem 0 0",
-        "cursor": "pointer",
-        "accentColor": "hsl(220, 70%, 50%)"
+    "layout-3-column": {
+      "name": "3 Column Layout",
+      "category": "layouts",
+      "description": "Three column layout",
+      "variables": {
+        "display": "grid",
+        "gridTemplateAreas": "\"a b c\"",
+        "gridTemplateColumns": "1fr 1fr 1fr",
+        "alignItems": "stretch"
       }
     },
-    "radio": {
-      "category": "form",
-      "name": "Radio",
-      "description": "Form element",
-      "styles": {
-        "display": "inline-block",
-        "width": "1rem",
-        "height": "1rem",
-        "margin": "0 0.5rem 0 0",
-        "cursor": "pointer",
-        "accentColor": "hsl(220, 70%, 50%)"
+    "layout-1-row": {
+      "name": "1 Row Layout",
+      "category": "layouts",
+      "description": "Single row layout",
+      "variables": {
+        "display": "grid",
+        "gridTemplateAreas": "\"a\"",
+        "gridTemplateColumns": "1fr",
+        "alignItems": "center"
       }
     },
-    "switch": {
-      "category": "form",
-      "name": "Switch",
-      "description": "Form element",
-      "styles": {
-        "display": "inline-block",
-        "width": "3rem",
-        "height": "1.5rem",
-        "margin": "0 0.5rem 0 0",
-        "cursor": "pointer",
-        "accentColor": "hsl(220, 70%, 50%)",
-        "borderRadius": "0.75rem"
+    "layout-2-row": {
+      "name": "2 Row Layout",
+      "category": "layouts",
+      "description": "Two row layout",
+      "variables": {
+        "display": "grid",
+        "gridTemplateAreas": "\"a\" \"b\"",
+        "gridTemplateColumns": "1fr",
+        "gridTemplateRows": "auto 1fr",
+        "alignItems": "stretch"
       }
     },
-    "slider": {
-      "category": "form",
-      "name": "Slider",
-      "description": "Form element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "height": "0.5rem",
-        "margin": "0.5rem 0",
-        "cursor": "pointer",
-        "accentColor": "hsl(220, 70%, 50%)",
-        "borderRadius": "0.25rem"
+    "layout-3-row": {
+      "name": "3 Row Layout",
+      "category": "layouts",
+      "description": "Three row layout",
+      "variables": {
+        "display": "grid",
+        "gridTemplateAreas": "\"a\" \"b\" \"c\"",
+        "gridTemplateColumns": "1fr",
+        "gridTemplateRows": "auto auto auto",
+        "alignItems": "stretch"
       }
     },
-    "image": {
-      "category": "media",
-      "name": "Image",
-      "description": "Media element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "height": "auto",
-        "borderRadius": "0.375rem",
-        "boxShadow": "0 1px 3px hsla(0, 0%, 0%, 0.1)",
-        "backgroundColor": "var(--one-surface)",
-        "objectFit": "cover"
-      }
-    },
-    "avatar": {
-      "category": "media",
-      "name": "Avatar",
-      "description": "Media element",
-      "styles": {
-        "display": "inline-block",
-        "width": "2.5rem",
-        "height": "2.5rem",
-        "borderRadius": "50%",
-        "objectFit": "cover",
-        "backgroundColor": "var(--one-surface)",
-        "border": "2px solid hsl(0, 0%, 85%)"
-      }
-    },
-    "icon": {
-      "category": "media",
-      "name": "Icon",
-      "description": "Media element",
-      "styles": {
-        "display": "inline-block",
-        "width": "1.5rem",
-        "height": "1.5rem",
-        "fontSize": "1.5rem",
-        "lineHeight": "1",
-        "textAlign": "center",
-        "color": "var(--one-content)",
-        "verticalAlign": "middle"
-      }
-    },
-    "alert": {
-      "category": "feedback",
-      "name": "Alert",
-      "description": "Feedback element",
-      "styles": {
-        "display": "block",
-        "padding": "1rem",
-        "margin": "1rem 0",
-        "borderRadius": "0.375rem",
-        "backgroundColor": "hsl(220, 70%, 95%)",
-        "color": "var(--one-content)",
-        "border": "1px solid hsl(220, 70%, 85%)",
-        "fontSize": "0.875rem",
-        "lineHeight": "1.4"
-      }
-    },
-    "progress": {
-      "category": "feedback",
-      "name": "Progress",
-      "description": "Feedback element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "height": "0.5rem",
-        "backgroundColor": "var(--one-surface)",
-        "borderRadius": "0.25rem",
-        "overflow": "hidden",
-        "position": "relative"
-      }
-    },
-    "spinner": {
-      "category": "feedback",
-      "name": "Spinner",
-      "description": "Feedback element",
-      "styles": {
-        "display": "inline-block",
-        "width": "1.5rem",
-        "height": "1.5rem",
-        "border": "2px solid var(--one-border)",
-        "borderTopColor": "hsl(220, 70%, 50%)",
-        "borderRadius": "50%",
-        "animation": "spin 1s linear infinite"
-      }
-    },
-    "skeleton": {
-      "category": "feedback",
-      "name": "Skeleton",
-      "description": "Feedback element",
-      "styles": {
-        "display": "block",
-        "width": "100%",
-        "height": "1rem",
-        "backgroundColor": "var(--one-surface)",
-        "borderRadius": "0.25rem",
-        "position": "relative",
-        "overflow": "hidden"
-      }
-    },
-    "header": {
-      "category": "structure",
-      "name": "Header",
-      "description": "Structure element",
-      "styles": {
+    "flex-row": {
+      "name": "Flex Row",
+      "category": "layouts",
+      "description": "Flexible row layout",
+      "variables": {
         "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
         "alignItems": "center",
-        "padding": "0 1.5rem",
-        "backgroundColor": "var(--one-surface)",
-        "color": "var(--one-content)",
-        "width": "100%",
-        "height": "100%",
-        "boxSizing": "border-box",
-        "gridArea": "a"
+        "gap": "1rem"
       }
     },
-    "aside": {
-      "category": "structure",
-      "name": "Sidebar",
-      "description": "Structure element",
-      "styles": {
+    "flex-column": {
+      "name": "Flex Column",
+      "category": "layouts",
+      "description": "Flexible column layout",
+      "variables": {
         "display": "flex",
         "flexDirection": "column",
-        "padding": "1rem",
-        "backgroundColor": "var(--one-surface)",
-        "color": "var(--one-content)",
-        "width": "100%",
-        "height": "100%",
-        "boxSizing": "border-box",
-        "overflow": "auto",
-        "gridArea": "b"
+        "justifyContent": "flex-start",
+        "alignItems": "stretch",
+        "gap": "0.5rem"
       }
-    },
-    "main": {
-      "category": "structure",
-      "name": "Main",
-      "description": "Structure element",
-      "styles": {
-        "display": "grid", 
-        "gridTemplateColumns": "250px 1fr 300px",
-        "gridTemplateRows": "60px 1fr",
-        "gridTemplateAreas": "\"a a a\" \"b c d\"",
-        "gap": "1px",
-        "backgroundColor": "var(--one-surface)",
-        "color": "var(--one-content)",
-        "width": "100%",
-        "height": "100%",
-        "boxSizing": "border-box",
-        "overflow": "auto"
-      }
-    },
-    "dashboard": {
-      "category": "structure",
-      "name": "Dashboard",
-      "description": "Structure element",
-      "styles": {
-        "display": "grid",
-        "width": "100vw",
-        "height": "100vh",
-        "gridTemplateColumns": "250px 1fr 300px",
-        "gridTemplateRows": "60px 1fr",
-        "gridTemplateAreas": "\"a a a\" \"b c d\"",
-        "gap": "1px",
-        "backgroundColor": "var(--one-background-color)",
-        "boxSizing": "border-box",
-        "padding": "0",
-        "margin": "0"
-      }
-    },
+    }
+  },
 
-  "elementCategories": {
-    "base": {
-      "name": "Base",
-      "icon": "🏗️",
-      "color": "#8b5cf6",
-      "description": "Structural components for organizing content"
-    },
-    "typography": {
-      "name": "Typography Elements", 
-      "icon": "📝",
-      "color": "#3b82f6",
-      "description": "Text and heading components"
-    },
-    "interactive": {
-      "name": "Interactive Elements",
-      "icon": "⚡",
-      "color": "#ef4444", 
-      "description": "Clickable and interactive components"
-    },
-    "form": {
-      "name": "Form Elements",
-      "icon": "📝",
-      "color": "#10b981",
-      "description": "Input and form components"
-    },
-    "media": {
-      "name": "Media Elements",
-      "icon": "🖼️", 
-      "color": "#f59e0b",
-      "description": "Images and media components"
-    },
-    "feedback": {
-      "name": "Feedback Elements",
-      "icon": "💬",
-      "color": "#ef4444",
-      "description": "Alerts, progress, and status components"
-    },
-    "structure": {
-      "name": "Structure Elements",
-      "icon": "🏛️",
-      "color": "#6366f1",
-      "description": "Structural layout components"
+  "sections": {
+    "dashboard": {
+      "name": "Dashboard",
+      "description": "Studio ONE Dashboard layout",
+      "scope": "section",
+      "preset": "layout-dashboard",
+      "zones": {
+        "a": {
+          "scope": "wrapper",
+          "preset": "layout-3-column",
+          "label": "DashboardHeader",
+          "zones": {
+            "a": {
+              "scope": "wrapper",
+              "label": "HeaderBrand",
+              "content": {
+                "scope": "text-logo",
+                "text": "Studio ONE"
+              }
+            },
+            "b": {
+              "scope": "wrapper",
+              "preset": "flex-row",
+              "label": "HeaderNavigation",
+              "items": [
+                { "scope": "link", "text": "Dashboard" },
+                { "scope": "link", "text": "Components" },
+                { "scope": "link", "text": "Presets" },
+                { "scope": "link", "text": "Guardian" },
+                { "scope": "link", "text": "Export" }
+              ]
+            },
+            "c": {
+              "scope": "wrapper",
+              "preset": "flex-row",
+              "label": "HeaderActions",
+              "items": [
+                { "scope": "button", "text": "Save" },
+                { "scope": "button", "text": "Publish" }
+              ]
+            }
+          }
+        },
+        "b": {
+          "scope": "wrapper",
+          "label": "DashboardMainCanvas",
+          "preset": "layout-2-row",
+          "zones": {
+            "a": {
+              "scope": "wrapper",
+              "preset": "layout-3-column",
+              "label": "CanvasHeader",
+              "zones": {
+                "b": {
+                  "scope": "wrapper",
+                  "preset": "flex-row",
+                  "label": "CanvasNavigation",
+                  "items": [
+                    { "scope": "link", "text": "Grid" },
+                    { "scope": "link", "text": "Snaps" },
+                    { "scope": "link", "text": "Settings" }
+                  ]
+                }
+              }
+            },
+            "b": {
+              "scope": "wrapper",
+              "label": "CanvasContent"
+            }
+          }
+        },
+        "c": {
+          "scope": "wrapper",
+          "preset": "layout-3-row",
+          "label": "DashboardSidebarLibrary",
+          "zones": {
+            "a": {
+              "scope": "wrapper",
+              "label": "LibraryHeader",
+              "content": {
+                "scope": "title",
+                "text": "Library"
+              }
+            },
+            "b": {
+              "scope": "wrapper",
+              "preset": "flex-column",
+              "label": "LibraryMain",
+              "items": [
+                { "scope": "button", "text": "Elements" },
+                { "scope": "button", "text": "Components" },
+                { "scope": "button", "text": "Sections" },
+                { "scope": "button", "text": "Presets" }
+              ]
+            },
+            "c": {
+              "scope": "wrapper",
+              "preset": "layout-1-column",
+              "label": "LibraryFooter",
+              "items": [
+                { "scope": "button", "text": "Settings" }
+              ]
+            }
+          }
+        },
+        "d": {
+          "scope": "wrapper",
+          "preset": "layout-3-row",
+          "label": "DashboardSidebarEditor",
+          "zones": {
+            "a": {
+              "scope": "wrapper",
+              "label": "EditorHeader",
+              "content": {
+                "scope": "title",
+                "text": "Editor"
+              }
+            },
+            "b": {
+              "scope": "wrapper",
+              "preset": "flex-column",
+              "label": "EditorMain",
+              "items": [
+                { "scope": "button", "text": "Colors" },
+                { "scope": "button", "text": "Visual Effects" },
+                { "scope": "button", "text": "Borders" },
+                { "scope": "button", "text": "Behavior" },
+                { "scope": "button", "text": "Typography" },
+                { "scope": "button", "text": "Sizing" },
+                { "scope": "button", "text": "Spacing" },
+                { "scope": "button", "text": "Positioning" },
+                { "scope": "button", "text": "Layout" },
+                { "scope": "button", "text": "Grid" },
+                { "scope": "button", "text": "Flex" },
+                { "scope": "button", "text": "Animation" },
+                { "scope": "button", "text": "Transition" }
+              ]
+            },
+            "c": {
+              "scope": "wrapper",
+              "preset": "layout-2-column",
+              "label": "EditorFooter",
+              "items": [
+                { "scope": "button", "text": "Export" },
+                { "scope": "button", "text": "Save" }
+              ]
+            }
+          }
+        },
+        "e": {
+          "scope": "wrapper",
+          "preset": "layout-3-column",
+          "label": "DashboardFooter",
+          "zones": {
+            "a": {
+              "scope": "wrapper",
+              "content": {
+                "scope": "text",
+                "text": "© 2024 Studio ONE"
+              }
+            },
+            "b": {
+              "scope": "wrapper",
+              "content": {
+                "scope": "text",
+                "text": "Visual Canvas Builder."
+              }
+            },
+            "c": {
+              "scope": "wrapper",
+              "content": {
+                "scope": "text",
+                "text": "Zone System v4.0"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
-
-
